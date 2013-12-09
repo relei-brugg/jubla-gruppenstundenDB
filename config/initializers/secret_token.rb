@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-GruppenstundenDB::Application.config.secret_key_base = 'a0c5ca75cb0724fe1275e70f70b6960faba6e4912d64556dd1fdbe8592dad05c398c890e156174dd313f55642f26cfc0e80a5922a0893fbd9ac06f2299802191'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+GruppenstundenDB::Application.config.secret_key_base = secure_token
