@@ -1,0 +1,96 @@
+<div id="form-idea">
+  <%= simple_form_for @idea do |f| %>
+
+      <table>
+          <tr>
+            <td><%= f.label :title %></td>
+            <td colspan="3"><%= f.text_field :title %></td>
+          </tr>
+
+          <tr>
+            <th><%= f.label :location %></th>
+            <td style="width: 360px"><%= f.text_field :location %></td>
+            <th><%= f.label :group_size_categories %></th>
+            <td><%= f.association :group_size_categories, as: :check_boxes, label: false, wrapper_html: { class: 'checkboxes-group-size' } %></td>
+          </tr>
+
+          <tr>
+            <th><%= f.label :age_categories %></th>
+            <td><%= f.association :age_categories, as: :check_boxes, label: false, wrapper_html: { class: 'checkboxes-age' } %></td>
+            <th><%= f.label :duration %></th>
+            <td>
+              <table>
+                  <tr class="input-minutes">
+                    <td><%= f.label :duration_preparation %></td>
+                    <td><%= f.number_field :duration_preparation, min: 0, step: 5 %><label for="idea_duration_preparation"><%= t :minutes %></label></td>
+                  </tr>
+                  <tr class="input-minutes">
+                    <td><%= f.label :duration_total %></td>
+                    <td><%= f.number_field :duration_total, min: 0, step: 5 %><label for="idea_duration_total"><%= t :minutes %></label></td>
+                  </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <th><%= f.label :season_categories %></th>
+            <td><%= f.association :season_categories, as: :check_boxes, label: false, wrapper_html: { class: 'checkboxes-season' } %></td>
+            <th>Wo</th>
+            <td><%= f.association :location_categories, as: :check_boxes, label: false, wrapper_html: { class: 'checkboxes-location' } %></td>
+          </tr>
+
+          <tr>
+            <th><%= f.label :activity_categories %></th>
+            <td><%= f.association :activity_categories, as: :check_boxes, label: false, wrapper_html: { class: 'checkboxes-activity' } %></td>
+            <th><%= f.label :information %></th>
+            <td><%= f.text_field :information %></td>
+          </tr>
+
+          <tr>
+            <th><%= f.label :method_categories %></th>
+            <td colspan="3"><%= f.association :method_categories, as: :check_boxes, label: false, wrapper_html: { class: 'checkboxes-method' } %></td>
+          </tr>
+
+          <tr>
+            <th><%= f.label :material %></th>
+            <td colspan="3"><%= f.text_field :material %></td>
+          </tr>
+
+          <tr>
+            <th><%= f.label :security %></th>
+            <td colspan="3"><%= f.text_field :security %></td>
+          </tr>
+
+          <tr>
+            <th><%= f.label :remarks %></th>
+            <td colspan="3"><%= f.text_field :remarks %></td>
+          </tr>
+      </table>
+      <br>
+      <table>
+          <tr>
+            <th><%= f.label :ablauf %></th>
+            <th style="width: 500px"><%= f.label :beschreibung %></th>
+            <th><%= f.label :dauer %></th>
+          </tr>
+          <tr>
+            <th><%= f.label :start %></th>
+            <td><%= f.text_area :start %></td>
+            <td><div class="input-minutes"><%= f.number_field :duration_start, min: 0, step: 5 %><label for="idea_duration_start"><%= t :minutes %></label></div></td>
+          </tr>
+          <tr>
+            <th><%= f.label :main_part %></th>
+            <td><%= f.text_area :main_part %></td>
+            <td><div class="input-minutes"><%= f.number_field :duration_main_part, min: 0, step: 5 %><label for="idea_duration_main_part"><%= t :minutes %></label></div></td>
+          </tr>
+          <tr>
+            <th><%= f.label :end %></th>
+            <td><%= f.text_area :end %></td>
+            <td><div class="input-minutes"><%= f.number_field :duration_end, min: 0, step: 5 %><label for="idea_duration_end"><%= t :minutes %></label></div></td>
+          </tr>
+      </table>
+
+      <%= f.button :submit %>
+
+  <% end %>
+  </div>

@@ -1,0 +1,24 @@
+de:
+  minutes: 'Minuten'
+
+  activerecord:
+    attributes:
+      idea:
+        title: 'Titel'
+        location: 'Ort'
+        duration: 'Dauer'
+        duration_preparation: 'Vorbereitung'
+        duration_total: 'Gruppenstunde'
+        information: 'Literatur/Infos'
+        material: 'Material'
+        security: 'Sicherheit'
+        remarks: 'Bemerkungen'
+        start: 'Einstieg'
+        main_part: 'Hauptteil'
+        end: 'Ausstieg'
+        activity_categories: 'Aktivität'
+        age_categories: 'Alter der Kinder'
+        group_size_categories: 'Anzahl Kinder'
+        location_categories: 'Wo'
+        method_categories: 'Was'
+        season_categories: 'Jahreszeit'

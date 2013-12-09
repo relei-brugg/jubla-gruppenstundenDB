@@ -1,0 +1,4 @@
+<%= simple_form_for([@idea, @idea.comments.build]) do |f| %>
+    <%= f.input :text %>
+    <%= f.button :submit %>
+<% end %>

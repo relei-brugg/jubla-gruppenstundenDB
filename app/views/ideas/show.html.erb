@@ -1,0 +1,17 @@
+<p>
+  <strong>Title:</strong>
+  <%= @idea.title %>
+</p>
+
+<p>
+  <strong>Hauptteil:</strong>
+  <%= @idea.hauptteil %>
+</p>
+
+<h2>Comments</h2>
+<%= render @idea.comments %>
+
+<h2>Add a comment:</h2>
+<%= render "comments/form" %>
+
+<%= link_to 'Back', ideas_path %> | <%= link_to 'Edit', edit_idea_path(@idea) %>
