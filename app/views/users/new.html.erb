@@ -1,17 +1,12 @@
 <% provide(:title, 'Sign up') %>
 <h1>Sign up</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= simple_form_for @user do |f| %>
+<%= simple_form_for @user, html: {:class => 'form-horizontal'}  do |f| %>
+    <%= f.error_notification %>
 
-        <%= render 'shared/error_messages' %>
-
-        <%= f.input :name %>
-        <%= f.input :email %>
-        <%= f.input :password %>
-        <%= f.input :password_confirmation, label: "Confirmation" %>
-        <%= f.button :submit, "Create my account", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
-</div>
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation, label: 'Confirm Password' %>
+    <%= f.button :submit, 'Create my account', class: 'col-sm-offset-2' %>
+<% end %>

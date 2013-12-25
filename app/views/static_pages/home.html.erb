@@ -1,4 +1,4 @@
-<div class="center hero-unit">
+<div class="center jumbotron">
   <h1>Willkommen auf der Gruppenstunden Datenbank</h1>
 
   <h2>
@@ -7,9 +7,9 @@
 
 
   <% if signed_in? %>
-      <%= link_to "Erstelle eine Gruppenstunde", new_idea_path, class: "btn btn-large btn-primary" %>
+      <%= link_to "Erstelle eine Gruppenstunde", new_idea_path, class: "btn btn-lg btn-primary" %>
     <% else %>
-      <%= link_to "Melde dich an", signup_path, class: "btn btn-large btn-primary" %> um eine Gruppenstunde zu erstellen.
+      <%= link_to "Melde dich an", signin_path, class: "btn btn-lg btn-primary" %> um eine Gruppenstunde zu erstellen.
   <% end %>
 </div>
 

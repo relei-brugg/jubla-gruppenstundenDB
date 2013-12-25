@@ -9,6 +9,7 @@ group :test do
 end
 
 group :development do
+  gem 'rails_layout'
   gem 'mysql2', '0.3.14'
 end
 
@@ -26,7 +27,7 @@ gem 'jbuilder', '1.5.3'
 
 gem 'sass-rails', '4.0.1'
 gem 'bootstrap-sass', '3.0.3.0'
-gem 'simple_form', '3.0.1'
+gem 'simple_form', github: 'wtfiwtz/simple_form_bootstrap3'
 gem 'will_paginate', '3.0.5'
 gem 'bootstrap-will_paginate', '0.0.10'
 

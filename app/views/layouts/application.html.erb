@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= full_title(yield(:title)) %></title>
-  <%= stylesheet_link_tag "application", media: "all",
-                          "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-  <%= render 'layouts/shim' %>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-</head>
+    <title><%= full_title(yield(:title)) %></title>
 
-<body>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Gruppenstunden Db" %>">
 
-<%= render 'layouts/header' %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
-<div class="container">
-  <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>"><%= value %></div>
-  <% end %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
 
-  <%= yield %>
-  <%= render 'layouts/footer' %>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
 
-  <%= debug(params) if Rails.env.development? %>
-</div>
+    <main role="main">
+       <%= render 'layouts/messages' %>
+       <%= yield %>
+       <%= render 'layouts/footer' %>
 
-</body>
+       <%= debug(params) if Rails.env.development? %>
+    </main>
+  </body>
 </html>
