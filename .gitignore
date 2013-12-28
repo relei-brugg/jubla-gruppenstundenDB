@@ -18,3 +18,5 @@ doc/
 .DS_Store
 .idea
 .secret
+
+public/system/redactor_assets/
