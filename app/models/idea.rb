@@ -22,6 +22,10 @@ class Idea < ActiveRecord::Base
     %w[1 2 3]
   end
 
+  def progress
+    ((self.current_step.to_d-1) / self.steps.count * 100).to_i
+  end
+
   def next_step
     self.current_step = steps[steps.index(current_step)+1]
   end
