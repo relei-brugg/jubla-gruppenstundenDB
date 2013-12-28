@@ -3,6 +3,14 @@ de:
 
   activerecord:
     attributes:
+
+
+      user:
+        name: 'Name'
+        email: 'E-Mail'
+        password: 'Passwort'
+        password_confirmation: 'Bestätigung des Passworts'
+
       idea:
         title: 'Titel'
         location: 'Ort'
@@ -22,3 +30,26 @@ de:
         location_categories: 'Wo'
         method_categories: 'Was'
         season_categories: 'Jahreszeit'
+
+
+  helpers:
+    submit:
+      sessions:
+        submit: "Anmelden"
+
+  # activerecord.errors.models.user.attributes.name.blank
+  # activerecord.errors.models.user.blank
+  # activerecord.errors.messages.blank
+  # errors.attributes.name.blank
+  # errors.messages.blank
+
+  errors:
+    attributes:
+      email:
+        invalid: 'Ungültige E-Mail Adresse'
+    messages:
+      blank: '%{attribute} kann nicht leer sein'
+      too_short: "%{attribute} muss mindestens %{count} Zeichen enthalten"
+      invalid: 'Ungültige Eingabe'
+      confirmation: 'Bestätigung stimmt nicht überein'
+

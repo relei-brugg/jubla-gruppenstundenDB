@@ -1,0 +1,34 @@
+de:
+  simple_form:
+    "yes": 'Ja'
+    "no": 'Nein'
+    required:
+      text: 'erforderlich'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+
+    error_notification:
+      default_message: '<a class="close" data-dismiss="alert">&times;</a>Es wurden Fehler gefunden, bitte überprüfe die Eingabe:'
+
+    # Labels and hints examples
+    labels:
+    #  defaults:
+    #    password: 'PasswortSF'
+      sessions:
+        email: 'E-Mail'
+        password: 'Passwort'
+    #  user:
+    #    new:
+    #      email: 'E-mail to sign in.'
+    #    edit:
+    #      email: 'E-mail.'
+    #hints:
+    #  defaults:
+    #    password: 'No special characters, please.'
+
+    #placeholders:
+    #  defaults:
+    #    password: 'No special characters, please.'
+
