@@ -35,7 +35,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'redactor-rails', git: 'https://github.com/alvin/redactor-rails'
 gem 'carrierwave'
 gem 'mini_magick'
-#gem 'rmagick'
+gem 'rmagick'
 
 gem 'turbolinks', '2.0.0'
 gem 'bcrypt-ruby', '3.1.2'
