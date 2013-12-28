@@ -1,5 +1,13 @@
 <h1>Neue Gruppenstunde</h1>
 
-<%= render 'form' %>
+<%= simple_form_for @idea, html: { class: 'form-horizontal'} do |f| %>
 
-<%= link_to 'Back', ideas_path %>
+    <%= render "step#{@idea.current_step}", f: f %>
+
+    <div class="col-sm-offset-2">
+        <%= f.button :submit, 'Back', name: 'back_button' unless @idea.first_step? %>
+        <%= f.button :submit, @idea.last_step? ? 'Save' : 'Continue' %>
+    </div>
+
+
+<% end %>
