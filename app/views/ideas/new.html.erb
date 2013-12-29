@@ -1,9 +1,7 @@
 <h1>Neue Gruppenstunde</h1>
 
 <div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="<%= @idea.progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @idea.progress %>%">
-    <span class="sr-only">60% Complete</span>
-  </div>
+  <div class="progress-bar" role="progressbar" aria-valuenow="<%= @idea.progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @idea.progress %>%"></div>
 </div>
 
 <%= simple_form_for @idea, html: { class: 'form-horizontal'} do |f| %>
@@ -14,6 +12,5 @@
         <%= f.button :submit, 'Back', name: 'back_button' unless @idea.first_step? %>
         <%= f.button :submit, @idea.last_step? ? 'Save' : 'Continue' %>
     </div>
-
 
 <% end %>
