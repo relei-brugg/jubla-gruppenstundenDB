@@ -12,7 +12,7 @@ module IdeasHelper
   end
 
   def resetSession
-    session[:idea_step] = nil
-    session[:idea_params] = nil
+    session[:idea_step] = 0
+    session[:idea_params] = {}
   end
 end

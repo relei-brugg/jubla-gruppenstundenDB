@@ -1,3 +1,7 @@
+// Override Variables
+$font-family-sans-serif:  "Century Gothic", Arial, sans-serif !default;
+$font-family-serif:       Century, Times, serif !default;
+
 // import the CSS framework
 @import "bootstrap";
 
@@ -5,31 +9,17 @@
 img {
   @extend .img-responsive;
   margin: 0 auto;
-  }
-// override for the 'Home' navigation link
-.navbar-brand {
-  font-size: inherit;
-  }
+}
 
-// THESE ARE EXAMPLES YOU CAN MODIFY
-// create your own classes
-// to make views framework-neutral
-//.column {
-//  @extend .col-md-6;
-//  @extend .text-center;
-//  }
-//.form {
-//  @extend .col-md-6;
-//  }
-//.form-centered {
-//  @extend .col-md-6;
-//  @extend .text-center;
-//  }
-//.submit {
-//  @extend .btn;
-//  @extend .btn-primary;
-//  @extend .btn-lg;
-//  }
+.navbar-brand {
+  font-size: 1.7em;
+  font-weight: bold;
+
+  &:hover {
+    color: darkgrey;
+  }
+}
+
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
@@ -38,8 +28,8 @@ main {
   padding-bottom: 80px;
   //width: 100%;
   margin-top: 60px; // accommodate the navbar
-  }
+}
 section {
   @extend .row;
   margin-top: 20px;
-  }
+}
