@@ -28,7 +28,9 @@ de:
     #  defaults:
     #    password: 'No special characters, please.'
 
-    #placeholders:
+    placeholders:
     #  defaults:
     #    password: 'No special characters, please.'
+      idea:
+        duration_start: 'in Minuten'
 

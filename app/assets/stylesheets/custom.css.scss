@@ -8,51 +8,21 @@ $jublaBlue: #1c3f94;
   box-sizing: border-box;
 }
 
-/* universal */
-html {
-  overflow-y: scroll;
-}
-
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
+/* */
 .center {
   text-align: center;
-
-  h1 {
-    margin-bottom: 10px;
-  }
-}
-
-/* typography */
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
 }
 
 h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
+  font-weight: bold;
 }
 
 h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: grayLight;
+  color: gray;
 }
 
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
+.redactor_box {
+  resize: vertical;
 }
 
 /* footer */
@@ -81,10 +51,7 @@ footer {
 }
 
 /* forms */
-.error {
-  .form-control {
-    border-color: #a94442;
-  }
+.has-error {
   .help-inline {
     color: #a94442;
   }
@@ -113,3 +80,8 @@ footer {
   margin-top: 45px;
   @include box_sizing;
 }
+
+/* color classes */
+.red { color: red }
+.green { color: green }
+.blue { color: blue }

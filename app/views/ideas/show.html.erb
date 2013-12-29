@@ -1,18 +1,15 @@
-<p>
-  <strong>Title:</strong>
-  <%= @idea.title %>
-</p>
+<h1><%= @idea.title %></h1>
 
 <p>
-  <strong>Hauptteil:</strong>
+  <strong><%= Idea.human_attribute_name(:main_part) %>:</strong>
   <%= raw @idea.main_part %>
 </p>
 
 
-<h2>Comments</h2>
-<%= render @idea.comments %>
+<!--<h2><%= Comment.model_name.human(count: 2) %></h2>-->
+<!--<%= render @idea.comments %>-->
 
-<h2>Add a comment:</h2>
-<%= render "comments/form" %>
+<!--<h2>Add a comment:</h2>-->
+<!--<%= render "comments/form" %>-->
 
-<%= link_to 'Back', ideas_path %> | <%= link_to 'Edit', edit_idea_path(@idea) %>
+<!--<%= link_to t(:back), ideas_path %> | <%= link_to 'Edit', edit_idea_path(@idea) %>-->

@@ -1,9 +1,18 @@
 de:
-  minutes: 'Minuten'
+  back: 'Zurück'
+  next: 'Weiter'
+  save: 'Speichern'
+  new_idea: 'Neue Gruppenstunde'
+  sure?: 'Bist du sicher?'
 
   activerecord:
-    attributes:
+    models:
+      comment: {
+        one: 'Kommentar',
+        other: 'Kommentare'
+      }
 
+    attributes:
 
       user:
         name: 'Name'
@@ -17,6 +26,9 @@ de:
         duration: 'Dauer'
         duration_preparation: 'Vorbereitung'
         duration_total: 'Gruppenstunde'
+        duration_start: 'Dauer Einstieg'
+        duration_main_part: 'Dauer Hauptteil'
+        duration_end: 'Dauer Ausstieg'
         information: 'Literatur/Infos'
         material: 'Material'
         security: 'Sicherheit'
@@ -52,4 +64,7 @@ de:
       too_short: "%{attribute} muss mindestens %{count} Zeichen enthalten"
       invalid: 'Ungültige Eingabe'
       confirmation: 'Bestätigung stimmt nicht überein'
+      not_an_integer: 'Eingabe ist keine Ganzzahl'
+      not_a_number: 'Eingabe ist keine Zahl'
+      greater_than_or_equal_to: 'Eingabe muss grösser als %{count} sein'
 

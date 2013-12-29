@@ -4,8 +4,16 @@ module MultistepModel
   attr_accessor :steps
   attr_writer :current_step
 
+  def num_steps
+    steps.count
+  end
+
   def current_step
     @current_step || 0
+  end
+
+  def current_step_name
+    steps[current_step]
   end
 
   def first_step?
@@ -13,11 +21,11 @@ module MultistepModel
   end
 
   def last_step?
-    current_step == self.steps-1
+    current_step == self.num_steps-1
   end
 
   def save_step?
-    current_step == self.steps
+    current_step == self.num_steps
   end
 
   def previous_step
@@ -29,11 +37,11 @@ module MultistepModel
   end
 
   def progress
-    (self.current_step * 100) / self.steps
+    ((self.current_step) * 100) / (self.num_steps-1)
   end
 
   def all_valid?
-    self.steps.times do |step|
+    self.num_steps.times do |step|
       self.current_step = step
       valid?
     end

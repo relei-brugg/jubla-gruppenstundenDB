@@ -1,16 +1,3 @@
-<h1>Neue Gruppenstunde</h1>
+<h1><%= t :new_idea %></h1>
 
-<div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="<%= @idea.progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @idea.progress %>%"></div>
-</div>
-
-<%= simple_form_for @idea, html: { class: 'form-horizontal'} do |f| %>
-
-    <%= render "step#{@idea.current_step}", f: f %>
-
-    <div class="col-sm-offset-2">
-        <%= f.button :submit, 'Back', name: 'back_button' unless @idea.first_step? %>
-        <%= f.button :submit, @idea.last_step? ? 'Save' : 'Continue' %>
-    </div>
-
-<% end %>
+<%= render 'form' %>

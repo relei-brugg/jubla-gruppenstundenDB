@@ -1,0 +1,19 @@
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="<%= @idea.progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @idea.progress %>%"></div>
+</div>
+
+<%= simple_form_for @idea, html: { class: 'form-horizontal'} do |f| %>
+
+    <%= render "step_#{@idea.current_step_name}", f: f %>
+
+    <div class="col-sm-offset-2 col-sm-8">
+      <div class="pull-left">
+        <%= f.button :submit, value: t(:back), name: 'back_button', class: (@idea.first_step? ? 'disabled':'') %>
+      </div>
+      <div class="pull-right">
+        <%= f.button :submit, value: (@idea.last_step? ? t(:save):t(:next)), class: (@idea.last_step? ? 'btn-success':'') %>
+      </div>
+    </div>
+    &nbsp;
+
+<% end %>

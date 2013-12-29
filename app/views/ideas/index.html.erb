@@ -1,6 +1,6 @@
 <h1>Listing ideas</h1>
 
-<%= link_to 'New idea', new_idea_path %>
+<%= link_to t(:new_idea), new_idea_path %>
 
 <table>
   <tr>
@@ -12,11 +12,9 @@
 
   <% @ideas.each do |idea| %>
       <tr>
-        <td><%= idea.title %></td>
-        <td><%= link_to 'Show', idea %></td>
-        <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
-        <td><%= link_to 'Destroy', idea_path(idea),
-                        method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to idea.title, idea %></td>
+        <td><%= link_to edit_idea_path(idea) do %><span class="glyphicon glyphicon-pencil green"></span><% end %></td>
+        <td><%= link_to idea_path(idea), method: :delete, data: { confirm: t(:sure?) } do %><span class="glyphicon glyphicon-remove red"></span><% end %></td>
       </tr>
   <% end %>
 </table>
