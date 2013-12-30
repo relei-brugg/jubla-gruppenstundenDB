@@ -1,5 +1,6 @@
 class Idea < ActiveRecord::Base
 
+  belongs_to :user
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :group_size_categories
   has_and_belongs_to_many :age_categories

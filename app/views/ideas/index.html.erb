@@ -25,8 +25,10 @@
           <tr>
             <td><%= link_to idea.title, idea %></td>
             <td>
-              <%= link_to edit_idea_path(idea) do %><span class="glyphicon glyphicon-pencil green"></span><% end %>
-              <%= link_to idea_path(idea), method: :delete, data: { confirm: t(:sure?) } do %><span class="glyphicon glyphicon-remove red"></span><% end %>
+              <% if idea_owner? idea.id %>
+                  <%= link_to edit_idea_path(idea) do %><span class="glyphicon glyphicon-pencil green"></span><% end %>
+                  <%= link_to idea_path(idea), method: :delete, data: { confirm: t(:sure?) } do %><span class="glyphicon glyphicon-remove red"></span><% end %>
+              <% end %>
             </td>
           </tr>
         <% end %>

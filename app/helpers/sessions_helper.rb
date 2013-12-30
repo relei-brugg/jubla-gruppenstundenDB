@@ -37,12 +37,23 @@ module SessionsHelper
     session[:return_to] = request.url if request.get?
   end
 
+  def idea_owner? (idea_id)
+    signed_in? && (current_user.admin? || Idea.find(idea_id).user_id == current_user.id)
+  end
+
   # Before filters
   def signed_in_user
     unless signed_in?
       store_location
       flash[:warning] = 'Please sign in.'
       redirect_to signin_url
+    end
+  end
+
+  def idea_owner
+    unless idea_owner? (params[:id])
+      flash[:warning] = 'Not your Idea'
+      redirect_to(ideas_path)
     end
   end
 

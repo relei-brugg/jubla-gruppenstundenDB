@@ -2,6 +2,10 @@ class IdeasController < ApplicationController
 
   include IdeasHelper
 
+  before_action :signed_in_user, only: [:new, :create]
+  before_action :idea_owner,     only: [:edit, :update, :destroy]
+
+
   def index
 
     @search = Idea.new
@@ -43,6 +47,7 @@ class IdeasController < ApplicationController
     session[:idea_params].deep_merge!(idea_params) if idea_params
 
     @idea = Idea.new(session[:idea_params])
+    @idea.user = current_user
 
     handleStep
 
