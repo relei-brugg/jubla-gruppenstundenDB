@@ -4,12 +4,17 @@ de:
   save: 'Speichern'
   new_idea: 'Neue Gruppenstunde'
   sure?: 'Bist du sicher?'
+  filter: 'Suchen'
 
   activerecord:
     models:
       comment: {
         one: 'Kommentar',
         other: 'Kommentare'
+      }
+      idea: {
+        one: 'Gruppenstunde',
+        other: 'Gruppenstunden'
       }
 
     attributes:

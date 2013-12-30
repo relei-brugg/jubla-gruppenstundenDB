@@ -3,7 +3,28 @@ class IdeasController < ApplicationController
   include IdeasHelper
 
   def index
+
+    @search = Idea.new
     @ideas = Idea.all
+
+    if (params[:idea])
+      @search = Idea.new(idea_params)
+
+      Idea.columns.each do |c|
+        type = c.type
+        name = c.name
+        val  = @search[name]
+
+        if (val)
+          case type
+            when :integer
+              @ideas = @ideas.where('? = ?', name, val)
+            when :string
+              @ideas = @ideas.where("LOWER(#{name}) LIKE ?", '%'+val.downcase+'%')
+          end
+        end
+      end
+    end
   end
 
   def show
