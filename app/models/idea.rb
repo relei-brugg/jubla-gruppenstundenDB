@@ -1,7 +1,8 @@
 class Idea < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
-  #has_and_belongs_to_many :group_size_categories
+  has_and_belongs_to_many :group_size_categories
+  has_and_belongs_to_many :age_categories
 
   validates :title,              if: lambda { current_step_name == 'title' }, presence: true, length: { minimum: 5 }
   validates :start,              if: lambda { current_step_name == 'start' }, presence: true
@@ -16,7 +17,7 @@ class Idea < ActiveRecord::Base
   include MultistepModel
 
   after_initialize do
-    self.steps = %w[title start main end material]
+    self.steps = %w[title kids start main end material]
   end
 
 end

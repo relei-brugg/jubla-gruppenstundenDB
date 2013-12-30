@@ -53,9 +53,8 @@ class IdeasController < ApplicationController
     else
       render 'new'
     end
-
-   # @idea.group_size_category_ids = params[:idea][:group_size_category_ids]
   end
+
 
   def edit
     @idea = Idea.find(params[:id])
@@ -101,6 +100,8 @@ class IdeasController < ApplicationController
                                    :end,
                                    :duration_start,
                                    :duration_main_part,
-                                   :duration_end)
+                                   :duration_end,
+                                   group_size_category_ids: [],
+                                   age_category_ids: [])
     end
 end
