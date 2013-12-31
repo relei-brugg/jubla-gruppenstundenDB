@@ -1,2 +1,28 @@
-<%= f.association :group_size_categories, as: :check_boxes %>
+<script>
+    $(function() {
+        $( "#slider-range" ).slider({
+            range: true,
+            min: 0,
+            max: 50,
+            values: [ <%= @idea.group_size_min %>, <%= @idea.group_size_max %> ],
+            slide: function( event, ui ) {
+                $( "#idea_group_size_min" ).val( ui.values[ 0 ] );
+                $( "#idea_group_size_max" ).val( ui.values[ 1 ] );
+            }
+        });
+        $( "#idea_group_size_min" ).val( $( "#slider-range" ).slider( "values", 0 ) );
+        $( "#idea_group_size_max" ).val( $( "#slider-range" ).slider( "values", 1 ) );
+    });
+</script>
+
+<div class="form-group optional idea_group_size_categories">
+    <label for="group_size" class="optional control-label col-sm-2">Grppengrösse:</label>
+    <div class="col-sm-8">
+        <input type="text" id="idea_group_size_min" name="idea[group_size_min]" style="border:0; color:#f6931f; font-weight:bold; width: 20px; text-align: right"> -
+        <input type="text" id="idea_group_size_max" name="idea[group_size_max]" style="border:0; color:#f6931f; font-weight:bold; width: 20px">
+        <div id="slider-range"></div>
+    </div>
+</div>
+
+<%#= f.association :group_size_categories, as: :check_boxes %>
 <%= f.association :age_categories, as: :check_boxes %>

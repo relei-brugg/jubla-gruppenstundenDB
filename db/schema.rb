@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131228142111) do
+ActiveRecord::Schema.define(version: 20131231173459) do
 
   create_table "activity_categories", force: true do |t|
     t.string "name"
@@ -38,10 +38,6 @@ ActiveRecord::Schema.define(version: 20131228142111) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "group_size_categories", force: true do |t|
-    t.string "name"
   end
 
   create_table "group_size_categories_ideas", force: true do |t|
@@ -72,6 +68,8 @@ ActiveRecord::Schema.define(version: 20131228142111) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_size_min"
+    t.integer  "group_size_max"
   end
 
   create_table "ideas_location_categories", force: true do |t|

@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require turbolinks
 //= require redactor-rails
+//= require jquery.ui.all
 //= require_tree .

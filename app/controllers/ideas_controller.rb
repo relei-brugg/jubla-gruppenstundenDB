@@ -106,7 +106,13 @@ class IdeasController < ApplicationController
                                    :duration_start,
                                    :duration_main_part,
                                    :duration_end,
-                                   group_size_category_ids: [],
-                                   age_category_ids: [])
+                                   :group_size_min,
+                                   :group_size_max,
+                                   #group_size_category_ids: [],
+                                   age_category_ids: [],
+                                   method_category_ids: [],
+                                   activity_category_ids: [],
+                                   season_category_ids: [],
+                                   location_category_ids: [])
     end
 end
