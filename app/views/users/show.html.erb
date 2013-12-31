@@ -1,3 +1,10 @@
 <% provide(:title, @user.name) %>
 
 <h1><%= @user.name %></h1>
+
+Geschriebene Gruppenstunden: <%= @user.ideas.size %>
+
+<h2>Gruppenstunden</h2>
+<% @user.ideas.each do |idea| %>
+    <%= link_to idea.title, idea %><br>
+<% end %>

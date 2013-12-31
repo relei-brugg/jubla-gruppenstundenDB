@@ -1,9 +1,25 @@
 <h1><%= @idea.title %></h1>
 
-<p>
-  <strong><%= Idea.human_attribute_name(:main_part) %>:</strong>
-  <%= raw @idea.main_part %>
-</p>
+<div class="row">
+    <strong class="col-md-1">Author:</strong>
+    <%= link_to @idea.user.name, @idea.user, class: 'col-md-7' %><br>
+</div>
+<div class="row">
+  <strong class="col-md-1"><%= Idea.human_attribute_name(:material) %>:</strong>
+  <div class="col-md-7"><%= @idea.material %></div>
+</div>
+<div class="row">
+  <strong class="col-md-1"><%= Idea.human_attribute_name(:start) %>:</strong>
+  <div class="col-md-7"><%= raw @idea.start %></div>
+</div>
+<div class="row">
+  <strong class="col-md-1"><%= Idea.human_attribute_name(:main_part) %>:</strong>
+  <div class="col-md-7"><%= raw @idea.main_part %></div>
+</div>
+<div class="row">
+  <strong class="col-md-1"><%= Idea.human_attribute_name(:end) %>:</strong>
+  <div class="col-md-7"><%= raw @idea.end %></div>
+</div>
 
 
 <!--<h2><%= Comment.model_name.human(count: 2) %></h2>-->
