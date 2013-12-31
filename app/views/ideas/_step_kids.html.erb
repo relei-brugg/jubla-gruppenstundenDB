@@ -4,7 +4,7 @@
             range: true,
             min: 0,
             max: 50,
-            values: [ <%= @idea.group_size_min %>, <%= @idea.group_size_max %> ],
+            values: [ <%= @idea.group_size_min ||= 1 %>, <%= @idea.group_size_max ||= 10 %> ],
             slide: function( event, ui ) {
                 $( "#idea_group_size_min" ).val( ui.values[ 0 ] );
                 $( "#idea_group_size_max" ).val( ui.values[ 1 ] );
