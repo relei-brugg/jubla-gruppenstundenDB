@@ -23,7 +23,6 @@
             slide: function( event, ui ) {
                 $( "#idea_group_size_min" ).val( ui.values[ 0 ] );
                 $( "#idea_group_size_max" ).val( ui.values[ 1 ] );
-                if (ui.values[1] == 50) $( "#idea_group_size_max" ).val("unlimitiert")
             }
         });
         $( "#idea_group_size_min" ).val( $( "#slider-group-size" ).slider( "values", 0 ) );

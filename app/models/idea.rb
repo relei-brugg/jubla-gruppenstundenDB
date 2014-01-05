@@ -16,6 +16,11 @@ class Idea < ActiveRecord::Base
   validates :duration_main_part,   if: lambda { current_step_name == 'main' }, numericality: {only_integer: true, greater_than_or_equal_to: 0 }, presence: true
   validates :duration_end,         if: lambda { current_step_name == 'end' }, numericality: {only_integer: true, greater_than_or_equal_to: 0 }, presence: true
 
+  validates :age_min,              if: lambda { current_step_name == 'kids' }, numericality: {only_integer: true, greater_than_or_equal_to: 0 }, presence: true
+  validates :age_max,              if: lambda { current_step_name == 'kids' }, numericality: {only_integer: true, greater_than_or_equal_to: 0 }, presence: true
+  validates :group_size_min,       if: lambda { current_step_name == 'kids' }, numericality: {only_integer: true, greater_than_or_equal_to: 0 }, presence: true
+  validates :group_size_min,       if: lambda { current_step_name == 'kids' }, numericality: {only_integer: true, greater_than_or_equal_to: 0 }, presence: true
+
 
   # Multistep form code
   include MultistepModel
@@ -23,5 +28,4 @@ class Idea < ActiveRecord::Base
   after_initialize do
     self.steps = %w[title kids method location start main end material]
   end
-
 end
