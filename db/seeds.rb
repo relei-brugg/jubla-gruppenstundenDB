@@ -9,18 +9,6 @@ ActivityCategory.create ([ {name: 'ruhig'},
                            {name: 'aktiv'},
                            {name: 'kreativ'} ])
 
-AgeCategory.create ([ {name: '5-7'},
-                      {name: '8-10'},
-                      {name: '11-13'},
-                      {name: '14-16'},
-                      {name: 'jüngere'},
-                      {name: 'ältere'} ])
-
-GroupSizeCategory.create ([ {name: '<5'},
-                            {name: '<10'},
-                            {name: '<20'},
-                            {name: '>20'} ])
-
 LocationCategory.create ([ {name: 'Drinnen'},
                            {name: 'Draussen'},
                            {name: 'im Wald'} ])
