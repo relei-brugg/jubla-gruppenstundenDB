@@ -17,9 +17,9 @@ class IdeasController < ApplicationController
       Idea.columns.each do |c|
         type = c.type
         name = c.name
-        val  = @search[name]
+        val  = params[:idea][name]
 
-        if (val)
+        if (val && val != '')
           case type
             when :integer
               @ideas = @ideas.where('? = ?', name, val)
