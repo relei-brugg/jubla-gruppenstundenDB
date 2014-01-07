@@ -44,7 +44,7 @@
         <%= f.hidden_field :rating, id: "rating-value" %>
 
         <% (1..5).each do |i| %>
-            <span class="glyphicon glyphicon-star<%= (@idea_rating.rating && i <= @idea_rating.rating) ? '' : '-empty' %>" id="rating_star_<%= i %>" data-star-value="<%= i %>"></span>
+            <span id="rating_star_<%= i %>" data-star-value="<%= i %>"></span>
         <% end %>
     <% end %>
 <% end %>
