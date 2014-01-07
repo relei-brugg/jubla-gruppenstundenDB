@@ -1,5 +1,6 @@
 GruppenstundenDB::Application.routes.draw do
 
+  get "idea_ratings/update"
   mount RedactorRails::Engine => '/redactor_rails'
 
   root  'static_pages#home'
@@ -15,4 +16,6 @@ GruppenstundenDB::Application.routes.draw do
   resources :ideas do
     resources :comments
   end
+  resources :idea_ratings, only: [:create, :update]
+
 end

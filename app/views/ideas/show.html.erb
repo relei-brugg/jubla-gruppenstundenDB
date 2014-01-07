@@ -17,6 +17,10 @@
   <div class="col-md-7"><%= @idea.views %></div>
 </div>
 <div class="row">
+  <strong class="col-md-1"><%= 'Avg. Rating' %>:</strong>
+  <div class="col-md-7"><%= @idea.idea_ratings.average(:rating) %></div>
+</div>
+<div class="row">
   <strong class="col-md-1"><%= Idea.human_attribute_name(:material) %>:</strong>
   <div class="col-md-7"><%= @idea.material %></div>
 </div>
@@ -33,7 +37,20 @@
   <div class="col-md-7"><%= raw @idea.end %></div>
 </div>
 
+<!-- RATING -->
+<% if signed_in? %>
+    <%= simple_form_for (@idea_rating), remote: true, html: {id: 'rating_form'} do |f| %>
+        <%= f.hidden_field :idea_id %>
+        <%= f.hidden_field :rating, id: "rating-value" %>
 
+        <% (1..5).each do |i| %>
+            <span class="glyphicon glyphicon-star<%= (@idea_rating.rating && i <= @idea_rating.rating) ? '' : '-empty' %>" id="rating_star_<%= i %>" data-star-value="<%= i %>"></span>
+        <% end %>
+    <% end %>
+<% end %>
+
+
+<!-- COMMENTS -->
 <!--<h2><%= Comment.model_name.human(count: 2) %></h2>-->
 <!--<%= render @idea.comments %>-->
 

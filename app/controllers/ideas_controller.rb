@@ -34,6 +34,11 @@ class IdeasController < ApplicationController
   def show
     @idea = Idea.find(params[:id])
 
+    if signed_in?
+      @idea_rating = @idea.idea_ratings.find_by_user_id(current_user.id)
+      @idea_rating = IdeaRating.new(idea: @idea, user: current_user) unless @idea_rating
+    end
+
     IdeaVisit.visitIdea(@idea, request.remote_ip)
   end
 
