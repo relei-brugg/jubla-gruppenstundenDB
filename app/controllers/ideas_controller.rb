@@ -33,6 +33,8 @@ class IdeasController < ApplicationController
 
   def show
     @idea = Idea.find(params[:id])
+
+    IdeaVisit.visitIdea(@idea, request.remote_ip)
   end
 
   def new

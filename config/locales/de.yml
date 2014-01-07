@@ -6,6 +6,14 @@ de:
   sure?: 'Bist du sicher?'
   filter: 'Suchen'
 
+  time:
+    formats:
+      default: "%d.%m.%Y, %H:%M"
+
+  attributes:
+    created_at: 'Erstellt am'
+    updated_at: 'Geändert am'
+
   activerecord:
     models:
       comment: {
@@ -18,7 +26,6 @@ de:
       }
 
     attributes:
-
       user:
         name: 'Name'
         email: 'E-Mail'

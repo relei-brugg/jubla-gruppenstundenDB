@@ -5,6 +5,18 @@
     <%= link_to @idea.user.name, @idea.user, class: 'col-md-7' %><br>
 </div>
 <div class="row">
+  <strong class="col-md-1"><%= Idea.human_attribute_name(:created_at) %>:</strong>
+  <div class="col-md-7"><%= l(@idea.created_at) %></div>
+</div>
+<div class="row">
+  <strong class="col-md-1"><%= Idea.human_attribute_name(:updated_at) %>:</strong>
+  <div class="col-md-7"><%= l(@idea.updated_at) %></div>
+</div>
+<div class="row">
+  <strong class="col-md-1"><%= Idea.human_attribute_name(:views) %>:</strong>
+  <div class="col-md-7"><%= @idea.views %></div>
+</div>
+<div class="row">
   <strong class="col-md-1"><%= Idea.human_attribute_name(:material) %>:</strong>
   <div class="col-md-7"><%= @idea.material %></div>
 </div>
