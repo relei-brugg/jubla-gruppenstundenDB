@@ -1,0 +1,11 @@
+<div id="avg_rating"><%= @idea.idea_ratings.average(:rating) %></div>
+<% if signed_in? %>
+    <%= simple_form_for (@idea_rating), remote: true, html: {id: 'rating_form'} do |f| %>
+        <%= f.hidden_field :idea_id %>
+        <%= f.hidden_field :rating, id: "rating-value" %>
+
+        <% (1..5).each do |i| %>
+            <span id="rating_star_<%= i %>" data-star-value="<%= i %>"></span>
+        <% end %>
+    <% end %>
+<% end %>

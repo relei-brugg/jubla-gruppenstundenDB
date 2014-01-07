@@ -24,7 +24,7 @@ ready = ->
 
 
   previewStars = (element) ->
-    setStarColor('black')
+    setStarColor('gold')
     stars = $(element).data("star-value")
     setStars(stars)
 
@@ -34,15 +34,21 @@ ready = ->
     setStars(stars)
 
   initStars = () ->
+    setStarColor('gold')
     $("span[data-star-value]").each ->
       $(this).addClass('glyphicon')
+
+  update = (data) ->
+    $('#avg_rating').text(data.avg)
 
 
   $ ->
     $("span[data-star-value]").click ->
       star_value = $(this).data("star-value")
       $('#rating-value').val(star_value)
+      $('form#rating_form').bind('ajax:success', (event, data) -> update(data))
       $('form#rating_form').trigger('submit.rails')
+
 
   $ ->
     $("span[data-star-value]").hover(
