@@ -1,5 +1,5 @@
 <p>
-    <strong>Comment:</strong>
+    <strong><%= comment.user.name %>:</strong>
     <%= comment.text %>
 
     <% if comment_owner?(comment.id) %>

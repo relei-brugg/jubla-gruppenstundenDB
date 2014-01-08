@@ -48,6 +48,7 @@ class IdeasController < ApplicationController
     resetSession if session[:idea_params]['id']
 
     @idea = Idea.new(session[:idea_params])
+    @idea.published = true if current_user.ideas.count > 10
     @idea.current_step = session[:idea_step]
   end
 

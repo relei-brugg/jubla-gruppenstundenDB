@@ -1,6 +1,6 @@
-<div id="avg_rating"><%= @idea.idea_ratings.average(:rating) %></div>
+<span id="avg_rating"><%= @idea.idea_ratings.average(:rating) %></span>
 <% if user? %>
-    <%= simple_form_for (@idea_rating), remote: true, html: {id: 'rating_form'} do |f| %>
+    <%= simple_form_for (@idea_rating), remote: true, html: {id: 'rating_form', style: 'display:inline'} do |f| %>
         <%= f.hidden_field :idea_id %>
         <%= f.hidden_field :rating, id: "rating-value" %>
 

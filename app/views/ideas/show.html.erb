@@ -1,4 +1,10 @@
-<h1><%= @idea.title %></h1>
+<h1>
+  <%= @idea.title %>
+  <% if idea_owner?(@idea.id) %>
+      <small><%= link_to edit_idea_path(@idea) do %><span class="glyphicon glyphicon-pencil green"></span><% end %></small>
+  <% end %>
+</h1>
+
 
 <div class="row">
     <strong class="col-md-1">Author:</strong>
@@ -38,11 +44,12 @@
 </div>
 
 
- COMMENTS
 <h2><%= Comment.model_name.human(count: 2) %></h2>
 <%= render @idea.comments %>
 
-<h2>Add a comment:</h2>
-<%= render "comments/form" %>
+<% if user? %>
+    <h2>Add a comment:</h2>
+    <%= render "comments/form" %>
+<% end %>
 
-<%= link_to t(:back), ideas_path %> | <%= link_to 'Edit', edit_idea_path(@idea) %>
+<%= link_to t(:back), ideas_path %>

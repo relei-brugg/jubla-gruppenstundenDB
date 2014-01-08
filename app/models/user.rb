@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   before_save {self.email = email.downcase}
 
   has_many :idea_ratings
+  has_many :ideas
 
   validates :name, presence: true, length: {maximum: 50}
 
@@ -13,7 +14,6 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  has_many :ideas
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

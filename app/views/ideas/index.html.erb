@@ -1,5 +1,4 @@
-<h1><%= Idea.model_name.human(count: 2) %></h1>
-
+<!--<h1><%= Idea.model_name.human(count: 2) %></h1>-->
 
 <div class="row">
     <div class="col-md-4">
@@ -12,12 +11,13 @@
     </div>
 
     <div class="col-md-8">
-        <h2><%= Idea.model_name.human(count: 2) %></h2>
+        <h1><%= Idea.model_name.human(count: 2) %></h1>
         <%#= link_to t(:new_idea), new_idea_path, class: 'btn btn-primary' %><br>
 
         <table class="table table-striped">
           <thead><tr>
             <th>Title</th>
+            <th>Author</th>
             <th>Actions</th>
           </tr></thead>
           <tbody>
@@ -28,6 +28,9 @@
               <% if !idea.published %>
                    <span class="label label-danger">Unpublished</span>
               <% end %>
+            </td>
+            <td>
+              <%= link_to idea.user.name, idea.user %>
             </td>
             <td>
               <% if idea_owner?(idea.id) || moderator? %>
