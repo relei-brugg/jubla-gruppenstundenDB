@@ -1,10 +1,8 @@
 <p>
-  <strong>Comment:</strong>
-  <%= comment.text %>
-</p>
+    <strong>Comment:</strong>
+    <%= comment.text %>
 
-<p>
-  <%= link_to 'Destroy Comment', [comment.idea, comment],
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+    <% if comment_owner?(comment.id) %>
+        <%= link_to [comment.idea, comment], method: :delete, data: { confirm: t(:sure?) } do %><span class="glyphicon glyphicon-remove red"></span><% end %>
+    <% end %>
 </p>

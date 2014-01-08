@@ -11,10 +11,6 @@ module SessionsHelper
     cookies.delete(:remember_token)
   end
 
-  def signed_in?
-    !current_user.nil?
-  end
-
   def current_user=(user)
     @current_user = user
   end
@@ -22,10 +18,6 @@ module SessionsHelper
   def current_user
     remember_token = User.encrypt(cookies[:remember_token])
     @current_user ||= User.find_by(remember_token: remember_token)
-  end
-
-  def current_user?(user_id)
-    signed_in? && User.find(user_id) == current_user
   end
 
   def redirect_back_or(default)
@@ -37,24 +29,45 @@ module SessionsHelper
     session[:return_to] = request.url if request.get?
   end
 
+  # different user?-functions
+  def user?
+    !current_user.nil?
+  end
+
+  def user_owner? (user_id)
+    user? && User.find(user_id) == current_user
+  end
+
+  def comment_owner? (comment_id)
+    user? && (moderator? || Comment.find(comment_id).user_id == current_user.id)
+  end
+
   def idea_owner? (idea_id)
-    signed_in? && Idea.find(idea_id).user_id == current_user.id
+    user? && (moderator? || Idea.find(idea_id).user_id == current_user.id)
   end
 
   def moderator?
-    signed_in? && current_user.moderator?
+    user? && (admin? || current_user.moderator?)
   end
 
   def admin?
-    signed_in? && current_user.admin?
+    user? && current_user.admin?
   end
+
 
   # Before filters
   def signed_in_user
-    unless signed_in?
+    unless user?
       store_location
       flash[:warning] = 'Please sign in.'
       redirect_to signin_url
+    end
+  end
+
+  def comment_owner
+    unless comment_owner? (params[:id])
+      flash[:warning] = 'Not your comment'
+      redirect_to(ideas_path)
     end
   end
 
@@ -66,7 +79,7 @@ module SessionsHelper
   end
 
   def user_owner
-    unless current_user?(params[:id])
+    unless user_owner?(params[:id])
       flash[:warning] = 'Not your User'
       redirect_to(root_url)
     end
