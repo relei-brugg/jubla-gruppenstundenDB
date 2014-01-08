@@ -45,7 +45,7 @@
 
 
 <h2><%= Comment.model_name.human(count: 2) %></h2>
-<%= render @idea.comments %>
+<%= render @idea.comments.order('created_at DESC') %>
 
 <% if user? %>
     <h2>Add a comment:</h2>

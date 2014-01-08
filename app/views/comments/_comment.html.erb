@@ -1,8 +1,16 @@
-<p>
-    <strong><%= comment.user.name %>:</strong>
-    <%= comment.text %>
+<div class="well row">
+
+    <div class="col-md-2">
+        <strong><%= comment.user.name %></strong><br>
+        <small class="gray"><%= l comment.created_at %></small>
+    </div>
+    <div class="col-md-9">
+        <%= nl2br((comment.text)).html_safe %>
+    </div>
 
     <% if comment_owner?(comment.id) %>
+      <div class="pull-right">
         <%= link_to [comment.idea, comment], method: :delete, data: { confirm: t(:sure?) } do %><span class="glyphicon glyphicon-remove red"></span><% end %>
+      </div>
     <% end %>
-</p>
+</div>

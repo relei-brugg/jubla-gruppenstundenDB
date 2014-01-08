@@ -1,4 +1,4 @@
-<%= simple_form_for([@idea, @idea.comments.build]) do |f| %>
+<%= simple_form_for [@idea, @idea.comments.build], html: { class: 'form-horizontal'} do |f| %>
     <%= f.input :text %>
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'col-sm-offset-2' %>
 <% end %>

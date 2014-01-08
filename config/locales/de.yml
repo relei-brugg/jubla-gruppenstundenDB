@@ -58,6 +58,13 @@ de:
 
   helpers:
     submit:
+      create: "%{model} erstellen"
+      submit: "%{model} speichern"
+      update: "%{model} ändern"
+
+      comment:
+        create: "%{model} hinzufügen"
+
       sessions:
         submit: "Anmelden"
 
