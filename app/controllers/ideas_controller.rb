@@ -4,6 +4,7 @@ class IdeasController < ApplicationController
 
   before_action :signed_in_user, only: [:new, :create]
   before_action :idea_owner,     only: [:edit, :update, :destroy]
+  before_action :moderator_user, only: [:publish]
 
 
   def index
@@ -95,6 +96,15 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])
     @idea.destroy
     redirect_to ideas_path
+  end
+
+  def publish
+    idea = Idea.find(params[:id])
+    idea.published = true
+    if idea.save
+      flash[:success] = 'Idea published'
+      redirect_to action: :index
+    end
   end
 
   private

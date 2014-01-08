@@ -24,8 +24,8 @@ module SessionsHelper
     @current_user ||= User.find_by(remember_token: remember_token)
   end
 
-  def current_user?(user)
-    user == current_user
+  def current_user?(user_id)
+    signed_in? && User.find(user_id) == current_user
   end
 
   def redirect_back_or(default)
@@ -38,7 +38,15 @@ module SessionsHelper
   end
 
   def idea_owner? (idea_id)
-    signed_in? && (current_user.admin? || Idea.find(idea_id).user_id == current_user.id)
+    signed_in? && Idea.find(idea_id).user_id == current_user.id
+  end
+
+  def moderator?
+    signed_in? && current_user.moderator?
+  end
+
+  def admin?
+    signed_in? && current_user.admin?
   end
 
   # Before filters
@@ -57,12 +65,24 @@ module SessionsHelper
     end
   end
 
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
+  def user_owner
+    unless current_user?(params[:id])
+      flash[:warning] = 'Not your User'
+      redirect_to(root_url)
+    end
+  end
+
+  def moderator_user
+    if !moderator?
+      flash[:warning] = 'Not moderator'
+      redirect_to(root_url)
+    end
   end
 
   def admin_user
-    redirect_to(root_url) unless current_user.admin?
+    if !admin?
+      flash[:warning] = 'Not admin'
+      redirect_to(root_url)
+    end
   end
 end

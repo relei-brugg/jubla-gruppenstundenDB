@@ -23,11 +23,19 @@
           <tbody>
         <% @ideas.each do |idea| %>
           <tr>
-            <td><%= link_to idea.title, idea %></td>
             <td>
-              <% if idea_owner? idea.id %>
+              <%= link_to idea.title, idea %>
+              <% if !idea.published %>
+                   <span class="label label-danger">Unpublished</span>
+              <% end %>
+            </td>
+            <td>
+              <% if idea_owner?(idea.id) || moderator? %>
                   <%= link_to edit_idea_path(idea) do %><span class="glyphicon glyphicon-pencil green"></span><% end %>
                   <%= link_to idea_path(idea), method: :delete, data: { confirm: t(:sure?) } do %><span class="glyphicon glyphicon-remove red"></span><% end %>
+              <% end %>
+              <% if moderator? && !idea.published %>
+                  <%= link_to publish_idea_path(idea) do %><span class="glyphicon glyphicon-ok blue"></span><% end %>
               <% end %>
             </td>
           </tr>
