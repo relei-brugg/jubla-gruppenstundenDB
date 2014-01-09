@@ -18,34 +18,63 @@ module IdeasHelper
 
 
   def filterIdeas
-    @search = Idea.new
+    @filter = Filter.new
 
-    if (params[:idea])
-      @search = Idea.new(idea_params)
+    if (params[:filter])
+      @filter = Filter.new(filter_params)
 
-      if @search.location_categories.size > 0
-        @ideas = @ideas.includes(:location_categories).where('location_categories.id IN (?)', @search.location_category_ids)
-      end
-      if @search.method_categories.size > 0
-        @ideas = @ideas.includes(:method_categories).where('method_categories.id IN (?)', @search.method_category_ids)
-      end
-      if @search.activity_categories.size > 0
-        @ideas = @ideas.includes(:activity_categories).where('activity_categories.id IN (?)', @search.activity_category_ids)
-      end
-      if @search.season_categories.size > 0
-        @ideas = @ideas.includes(:season_categories).where('season_categories.id IN (?)', @search.season_category_ids)
+      # text filter
+      if @filter.title != ''
+        @ideas = @ideas.where("LOWER(title) LIKE ?", ls(@filter.title))
       end
 
-      if @search.title
-        @ideas = @ideas.where("LOWER(title) LIKE ?", '%'+@search.title.downcase+'%')
+      if @filter.material != ''
+        @ideas = @ideas.where("LOWER(material) LIKE ?", ls(@filter.material))
       end
 
-      if @search.material
-        @ideas = @ideas.where("LOWER(material) LIKE ?", '%'+@search.material.downcase+'%')
+      if @filter.content != ''
+        @ideas = @ideas.where("LOWER(start) LIKE ? OR LOWER(main_part) LIKE ? OR LOWER(end) LIKE ?", ls(@filter.content), ls(@filter.content), ls(@filter.content))
       end
 
-      @ideas = @ideas.where('age_min <= ? AND age_max >= ?', @search.age_max, @search.age_min)
-      @ideas = @ideas.where('group_size_min <= ? AND group_size_max >= ?', @search.group_size_max, @search.group_size_min)
+      # associations filter
+      if @filter.method_category_ids.size > 1
+        @ideas = @ideas.includes(:method_categories).where('method_categories.id IN (?)', @filter.method_category_ids)
+      end
+      if @filter.location_category_ids.size > 1
+        @ideas = @ideas.includes(:location_categories).where('location_categories.id IN (?)', @filter.location_category_ids)
+      end
+      if @filter.activity_category_ids.size > 1
+        @ideas = @ideas.includes(:activity_categories).where('activity_categories.id IN (?)', @filter.activity_category_ids)
+      end
+      if @filter.season_category_ids.size > 1
+        @ideas = @ideas.includes(:season_categories).where('season_categories.id IN (?)', @filter.season_category_ids)
+      end
+
+      # range filter
+      if @filter.age_min && @filter.age_max
+        @ideas = @ideas.where('age_min <= ? AND age_max >= ?', @filter.age_max, @filter.age_min)
+      end
+      if @filter.group_size_min && @filter.group_size_max
+        @ideas = @ideas.where('group_size_min <= ? AND group_size_max >= ?', @filter.group_size_max, @filter.group_size_min)
+      end
     end
+  end
+
+  def ls (text)
+    '%'+text.downcase+'%'
+  end
+
+  def filter_params
+    params.require(:filter).permit(:title,
+                                   :material,
+                                   :content,
+                                   :group_size_min,
+                                   :group_size_max,
+                                   :age_min,
+                                   :age_max,
+                                   method_category_ids: [],
+                                   activity_category_ids: [],
+                                   season_category_ids: [],
+                                   location_category_ids: [])
   end
 end

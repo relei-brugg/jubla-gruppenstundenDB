@@ -16,6 +16,16 @@ de:
     labels:
     #  defaults:
     #    password: 'PasswortSF'
+
+      search:
+        title: 'Titel'
+        material: 'Material'
+        content: 'Inhalt'
+        method_category_ids: 'Was'
+        activity_category_ids: 'Wie'
+        season_category_ids: 'Wann'
+        location_category_ids: 'Wo'
+
       sessions:
         email: 'E-Mail'
         password: 'Passwort'

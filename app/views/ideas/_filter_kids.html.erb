@@ -4,7 +4,7 @@
             range: true,
             min: 0,
             max: 30,
-            values: [ <%= @search.age_min ||= 0 %>, <%= @search.age_max ||= 30 %> ],
+            values: [ <%= @filter.age_min ||= 0 %>, <%= @filter.age_max ||= 30 %> ],
             slide: function( event, ui ) {
                 $( "#idea_age_min" ).val( ui.values[ 0 ] );
                 $( "#idea_age_max" ).val( ui.values[ 1 ] );
@@ -19,7 +19,7 @@
             range: true,
             min: 0,
             max: 50,
-            values: [ <%= @search.group_size_min ||= 0 %>, <%= @search.group_size_max ||= 50 %> ],
+            values: [ <%= @filter.group_size_min ||= 0 %>, <%= @filter.group_size_max ||= 50 %> ],
             slide: function( event, ui ) {
                 $( "#idea_group_size_min" ).val( ui.values[ 0 ] );
                 $( "#idea_group_size_max" ).val( ui.values[ 1 ] );
@@ -33,8 +33,8 @@
 <div class="form-group optional idea_group_size col-sm-6">
   <div class="row col-sm-12">
       <label for="group_size" class="optional control-label">Grppengrösse:</label>
-      <input type="text" id="idea_group_size_min" name="idea[group_size_min]" style="border:0; color:#f6931f; font-weight:bold; width: 20px; text-align: right"> -
-      <input type="text" id="idea_group_size_max" name="idea[group_size_max]" style="border:0; color:#f6931f; font-weight:bold; width: 20px">
+      <input type="text" id="idea_group_size_min" name="search[group_size_min]" style="border:0; color:#f6931f; font-weight:bold; width: 20px; text-align: right"> -
+      <input type="text" id="idea_group_size_max" name="search[group_size_max]" style="border:0; color:#f6931f; font-weight:bold; width: 20px">
   </div>
   <div class="row col-sm-12">
     <div id="slider-group-size"></div>
@@ -44,8 +44,8 @@
 <div class="form-group optional idea_age col-sm-6">
   <div class="row col-sm-12">
     <label for="age" class="optional control-label">Alter der Kinder:</label>
-    <input type="text" id="idea_age_min" name="idea[age_min]" style="border:0; color:#f6931f; font-weight:bold; width: 20px; text-align: right"> -
-    <input type="text" id="idea_age_max" name="idea[age_max]" style="border:0; color:#f6931f; font-weight:bold; width: 20px">
+    <input type="text" id="idea_age_min" name="search[age_min]" style="border:0; color:#f6931f; font-weight:bold; width: 20px; text-align: right"> -
+    <input type="text" id="idea_age_max" name="search[age_max]" style="border:0; color:#f6931f; font-weight:bold; width: 20px">
   </div>
   <div class="row col-sm-12">
     <div id="slider-age"></div>

@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title"><a data-toggle="collapse" href="#collapseFilter">Filter</a></h4>
+  </div>
+  <div id="collapseFilter" class="panel-collapse collapse">
+    <div class="panel-body">
+      <%= simple_form_for @filter, url: { controller: 'ideas', action: 'index' }, wrapper: :vertical, html: { class: 'form-vertical', method: :get } do |f| %>
+          <div class="row">
+            <div class="col-md-2"><%= f.input :title %></div>
+            <div class="col-md-2"><%= f.input :material %></div>
+            <div class="col-md-2"><%= f.input :content %></div>
+          </div>
+          <div class="row">
+            <%= render 'filter_kids' %>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :method_category_ids %>
+              <%= f.collection_check_boxes :method_category_ids, MethodCategory.all, :id, :name, checked: @filter.method_category_ids, item_wrapper_class: 'checkbox' %>
+            </div>
+            <div class="col-md-2">
+              <%= f.label :activity_category_ids %>
+              <%= f.collection_check_boxes :activity_category_ids, ActivityCategory.all, :id, :name, checked: @filter.activity_category_ids, item_wrapper_class: 'checkbox' %>
+            </div>
+            <div class="col-md-2">
+              <%= f.label :season_category_ids %>
+              <%= f.collection_check_boxes :season_category_ids, SeasonCategory.all, :id, :name, checked: @filter.season_category_ids, item_wrapper_class: 'checkbox' %>
+            </div>
+            <div class="col-md-2">
+              <%= f.label :location_category_ids %>
+              <%= f.collection_check_boxes :location_category_ids, LocationCategory.all, :id, :name, checked: @filter.location_category_ids, item_wrapper_class: 'checkbox' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4"><%= f.button :submit, value: t(:filter) %></div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
