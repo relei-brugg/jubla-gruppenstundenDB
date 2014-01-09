@@ -1,16 +1,35 @@
 <!--<h1><%= Idea.model_name.human(count: 2) %></h1>-->
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Filter</h2>
-        <%= simple_form_for @search, url: { action: 'index' }, html: { class: 'form-horizontal', method: :get } do |f| %>
-          <%= f.input :title %>
-          <%= f.input :material %>
-          <%= f.button :submit, value: t(:filter), class: 'col-md-offset-2' %>
-        <% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title"><a data-toggle="collapse" href="#collapseFilter">Filter</a></h4>
+  </div>
+  <div id="collapseFilter" class="panel-collapse collapse">
+    <div class="panel-body">
+      <%= simple_form_for @search, url: { action: 'index' },wrapper: :vertical, html: { class: 'form-vertical', method: :get } do |f| %>
+          <div class="row">
+            <div class="col-md-2"><%= f.input :title %></div>
+            <div class="col-md-2"><%= f.input :material %></div>
+          </div>
+          <div class="row">
+            <%= render 'search_kids' %>
+          </div>
+          <!--<div class="row">
+            <div class="col-md-2"><%= f.association :method_categories, as: :check_boxes %></div>
+            <div class="col-md-2"><%= f.association :activity_categories, as: :check_boxes %></div>
+            <div class="col-md-2"><%= f.association :season_categories, as: :check_boxes %></div>
+            <div class="col-md-2"><%= f.association :location_categories, as: :check_boxes %></div>
+          </div>-->
+          <div class="row">
+            <div class="col-md-4"><%= f.button :submit, value: t(:filter) %></div>
+          </div>
+      <% end %>
     </div>
+  </div>
+</div>
 
-    <div class="col-md-8">
+<div class="row">
+    <div class="col-md-12">
         <h1><%= Idea.model_name.human(count: 2) %></h1>
         <%#= link_to t(:new_idea), new_idea_path, class: 'btn btn-primary' %><br>
 

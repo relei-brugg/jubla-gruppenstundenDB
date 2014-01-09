@@ -8,28 +8,8 @@ class IdeasController < ApplicationController
 
 
   def index
-
-    @search = Idea.new
     @ideas = Idea.all
-
-    if (params[:idea])
-      @search = Idea.new(idea_params)
-
-      Idea.columns.each do |c|
-        type = c.type
-        name = c.name
-        val  = params[:idea][name]
-
-        if (val && val != '')
-          case type
-            when :integer
-              @ideas = @ideas.where('? = ?', name, val)
-            when :string
-              @ideas = @ideas.where("LOWER(#{name}) LIKE ?", '%'+val.downcase+'%')
-          end
-        end
-      end
-    end
+    filterIdeas
   end
 
   def show
