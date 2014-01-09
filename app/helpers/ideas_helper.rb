@@ -59,6 +59,16 @@ module IdeasHelper
         @ideas = @ideas.includes(:season_categories).where('season_categories.id IN (?)', @filter.season_category_ids)
       end
 
+      # filter gender
+      if @filter.boys || @filter.girls
+        if @filter.boys == "1" && @filter.girls == "0"
+          @ideas = @ideas.where(boys: true)
+        end
+        if @filter.girls == "1" && @filter.boys == "0"
+          @ideas = @ideas.where(girls: true)
+        end
+      end
+
       # range filter
       if @filter.age_min && @filter.age_max
         @ideas = @ideas.where('age_min <= ? AND age_max >= ?', @filter.age_max, @filter.age_min)
@@ -69,6 +79,7 @@ module IdeasHelper
     end
   end
 
+  private
   def ls (text)
     '%'+text.downcase+'%'
   end
@@ -81,6 +92,8 @@ module IdeasHelper
                                    :group_size_max,
                                    :age_min,
                                    :age_max,
+                                   :boys,
+                                   :girls,
                                    method_category_ids: [],
                                    activity_category_ids: [],
                                    season_category_ids: [],

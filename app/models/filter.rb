@@ -14,6 +14,8 @@ class Filter
   attr_accessor :age_max
   attr_accessor :group_size_min
   attr_accessor :group_size_max
+  attr_accessor :boys
+  attr_accessor :girls
 
   def initialize(attributes = {})
     attributes.each do |name, value|

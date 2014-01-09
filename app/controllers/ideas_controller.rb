@@ -111,6 +111,8 @@ class IdeasController < ApplicationController
                                    :group_size_max,
                                    :age_min,
                                    :age_max,
+                                   :boys,
+                                   :girls,
                                    method_category_ids: [],
                                    activity_category_ids: [],
                                    season_category_ids: [],

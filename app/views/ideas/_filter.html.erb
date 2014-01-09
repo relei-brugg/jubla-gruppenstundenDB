@@ -30,6 +30,21 @@
               <%= f.label :location_category_ids %>
               <%= f.collection_check_boxes :location_category_ids, LocationCategory.all, :id, :name, checked: @filter.location_category_ids, item_wrapper_class: 'checkbox' %>
             </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="gender" class="optional control-label">Wer</label>
+                    <div class="">
+                        <span class="checkbox">
+                            <%= f.check_box :boys %>
+                            <label class="check_boxes" for="filter_boys">Knaben</label>
+                        </span>
+                        <span class="checkbox">
+                            <%= f.check_box :girls %>
+                            <label class="check_boxes" for="filter_girls">Mädchen</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
           </div>
           <div class="row">
             <div class="col-md-4"><%= f.button :submit, value: t(:filter) %></div>

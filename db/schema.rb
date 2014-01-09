@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108174231) do
+ActiveRecord::Schema.define(version: 20140109212355) do
 
   create_table "activity_categories", force: true do |t|
     t.string "name"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20140108174231) do
     t.integer  "group_size_max"
     t.integer  "age_min"
     t.integer  "age_max"
+    t.boolean  "boys"
+    t.boolean  "girls"
   end
 
   create_table "ideas_location_categories", force: true do |t|
