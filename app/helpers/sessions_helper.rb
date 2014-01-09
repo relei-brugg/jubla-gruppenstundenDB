@@ -39,7 +39,7 @@ module SessionsHelper
   end
 
   def not_idea_owner? (idea_id)
-    user? && (moderator? || Idea.find(idea_id).user_id != current_user.id)
+    user? && (Idea.find(idea_id).user_id != current_user.id)
   end
 
   def idea_owner? (idea_id)
