@@ -1,6 +1,6 @@
 class IdeaRatingsController < ApplicationController
 
-  before_action :not_idea_owner, only: [:create, :update]
+  before_action :allowed, only: [:create, :update]
 
   def create
     # workaround for multiple votes, if first vote
@@ -35,4 +35,12 @@ class IdeaRatingsController < ApplicationController
       end
     end
   end
+
+  private
+    def allowed
+      unless not_idea_owner? (params[:idea_rating][:idea_id])
+        flash[:warning] = 'You can not rate your own Idea'
+        redirect_to(ideas_path)
+      end
+    end
 end

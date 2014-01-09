@@ -1,4 +1,4 @@
-<span id="avg_rating"><%= @idea.idea_ratings.average(:rating) %></span>
+<span id="avg_rating"><%= @idea.idea_ratings.size > 0 ? @idea.idea_ratings.average(:rating) : 'noch nicht bewertet' %></span>
 <% if not_idea_owner?(@idea) %>
     <%= simple_form_for (@idea_rating), remote: true, html: {id: 'rating_form', style: 'display:inline'} do |f| %>
         <%= f.hidden_field :idea_id %>

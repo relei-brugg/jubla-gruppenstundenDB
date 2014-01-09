@@ -17,4 +17,12 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to idea_path(@idea)
   end
+
+  private
+    def comment_owner
+      unless comment_owner? (params[:id])
+        flash[:warning] = 'Not your comment'
+        redirect_to(ideas_path)
+      end
+    end
 end

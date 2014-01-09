@@ -116,4 +116,12 @@ class IdeasController < ApplicationController
                                    season_category_ids: [],
                                    location_category_ids: [])
     end
+
+
+    def idea_owner
+      unless idea_owner? (params[:id])
+        flash[:warning] = 'Not your Idea'
+        redirect_to(ideas_path)
+      end
+    end
 end

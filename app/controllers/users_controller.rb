@@ -67,12 +67,18 @@ class UsersController < ApplicationController
     redirect_to action: :index
   end
 
-  private
+  private 
+    def user_params
+      params.require(:user).permit(:name, :email, :password,
+                                   :password_confirmation)
+    end
 
-  def user_params
-    params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
-  end
+    def user_owner
+      unless user_owner?(params[:id])
+        flash[:warning] = 'Not your User'
+        redirect_to(root_url)
+      end
+    end
 
 
 end

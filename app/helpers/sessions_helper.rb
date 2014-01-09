@@ -68,34 +68,6 @@ module SessionsHelper
     end
   end
 
-  def comment_owner
-    unless comment_owner? (params[:id])
-      flash[:warning] = 'Not your comment'
-      redirect_to(ideas_path)
-    end
-  end
-
-  def not_idea_owner
-    unless not_idea_owner? (params[:id])
-      flash[:warning] = 'You can not rate your own Idea'
-      redirect_to(ideas_path)
-    end
-  end
-
-  def idea_owner
-    unless idea_owner? (params[:id])
-      flash[:warning] = 'Not your Idea'
-      redirect_to(ideas_path)
-    end
-  end
-
-  def user_owner
-    unless user_owner?(params[:id])
-      flash[:warning] = 'Not your User'
-      redirect_to(root_url)
-    end
-  end
-
   def moderator_user
     if !moderator?
       flash[:warning] = 'Not moderator'
