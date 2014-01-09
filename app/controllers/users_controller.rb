@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :user_owner,     only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action :moderator_user, only: [:toggle_moderator]
+  before_action :admin_user,     only: [:destroy, :toggle_admin]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -44,6 +45,26 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User deleted."
     redirect_to users_url
+  end
+
+  def toggle_admin
+    user = User.find(params[:id])
+    if user.update_attribute(:admin, !user.admin)
+      flash[:success] = 'User changed'
+    elsif
+      flash[:danger] = 'User not changed'
+    end
+    redirect_to action: :index
+  end
+
+  def toggle_moderator
+    user = User.find(params[:id])
+    if user.update_attribute(:moderator, !user.moderator)
+      flash[:success] = 'User changed'
+    elsif
+      flash[:danger] = 'User not changed'
+    end
+    redirect_to action: :index
   end
 
   private

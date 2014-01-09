@@ -11,6 +11,7 @@
           <thead><tr>
             <th>Title</th>
             <th>Author</th>
+            <th>Published</th>
             <th>Actions</th>
           </tr></thead>
           <tbody>
@@ -18,20 +19,20 @@
           <tr>
             <td>
               <%= link_to idea.title, idea %>
-              <% if !idea.published %>
-                   <span class="label label-danger">Unpublished</span>
-              <% end %>
+
             </td>
             <td>
               <%= link_to idea.user.name, idea.user %>
             </td>
             <td>
+              <%= link_to_if_with_block moderator?, toggle_published_idea_path(idea) do %>
+                  <span class="label <%= idea.published? ? 'label-success' : 'label-danger' %>"><%= idea.published? ? 'published' : 'unpublished' %></span>
+              <% end %>
+            </td>
+            <td>
               <% if idea_owner?(idea.id) || moderator? %>
                   <%= link_to edit_idea_path(idea) do %><span class="glyphicon glyphicon-pencil green"></span><% end %>
                   <%= link_to idea_path(idea), method: :delete, data: { confirm: t(:sure?) } do %><span class="glyphicon glyphicon-remove red"></span><% end %>
-              <% end %>
-              <% if moderator? && !idea.published %>
-                  <%= link_to publish_idea_path(idea) do %><span class="glyphicon glyphicon-ok blue"></span><% end %>
               <% end %>
             </td>
           </tr>

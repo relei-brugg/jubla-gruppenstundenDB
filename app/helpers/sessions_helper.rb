@@ -34,16 +34,16 @@ module SessionsHelper
     !current_user.nil?
   end
 
-  def user_owner? (user_id)
-    user? && User.find(user_id) == current_user
-  end
-
   def comment_owner? (comment_id)
     user? && (moderator? || Comment.find(comment_id).user_id == current_user.id)
   end
 
   def idea_owner? (idea_id)
     user? && (moderator? || Idea.find(idea_id).user_id == current_user.id)
+  end
+
+  def user_owner? (user_id)
+    user? && (admin? || User.find(user_id) == current_user)
   end
 
   def moderator?

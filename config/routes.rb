@@ -11,11 +11,16 @@ GruppenstundenDB::Application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   resources :sessions, only: [:new, :create, :destroy]
-  resources :users
+  resources :users do
+    member do
+      get 'toggle_moderator'
+      get 'toggle_admin'
+    end
+  end
   resources :ideas do
     resources :comments
     member do
-      get 'publish'
+      get 'toggle_published'
     end
   end
   resources :idea_ratings, only: [:create, :update]

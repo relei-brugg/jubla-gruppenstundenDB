@@ -1,8 +1,19 @@
-<li>
-  <%= link_to user.name, user %>
+<div class="row">
+    <div class="col-md-4">
+        <%= link_to user.name, user %>
+    </div>
 
-  <% if current_user.admin? && !user_owner?(user) %>
-      | <%= link_to 'delete', user, method: :delete,
-                    data: { confirm: 'You sure?' } %>
-  <% end %>
-</li>
+    <div class="col-md-2">
+        <%= link_to_if_with_block moderator?, toggle_moderator_user_path(user) do %>
+            <span class="label <%= user.moderator? ? 'label-success' : 'label-default' %>">Moderator</span>
+        <% end %>
+        <%= link_to_if_with_block admin?, toggle_admin_user_path(user) do %>
+            <span class="label <%= user.admin? ? 'label-success' : 'label-default' %>">Admin</span>
+        <% end %>
+        <% if admin? && !user_owner?(user) %>
+            <%= link_to user_path(user), method: :delete, data: { confirm: t(:sure?) } do %>
+                <span class="glyphicon glyphicon-remove red"></span>
+            <% end %>
+        <% end %>
+    </div>
+</div>

@@ -4,11 +4,12 @@ class IdeasController < ApplicationController
 
   before_action :signed_in_user, only: [:new, :create]
   before_action :idea_owner,     only: [:edit, :update, :destroy]
-  before_action :moderator_user, only: [:publish]
+  before_action :moderator_user, only: [:toggle_published]
 
 
   def index
     @ideas = Idea.all
+    filterUnpublishedIdeas if !moderator?
     filterIdeas
   end
 
@@ -61,6 +62,7 @@ class IdeasController < ApplicationController
 
     @idea = Idea.find(session[:idea_params]['id'])
     @idea.attributes = session[:idea_params]
+    @idea.published = false
 
     handleStep
 
@@ -79,13 +81,14 @@ class IdeasController < ApplicationController
     redirect_to ideas_path
   end
 
-  def publish
+  def toggle_published
     idea = Idea.find(params[:id])
-    idea.published = true
-    if idea.save
-      flash[:success] = 'Idea published'
-      redirect_to action: :index
+    if idea.update_attribute(:published, !idea.published)
+      flash[:success] = idea.published ? 'Idea published' : 'Idea unpublished';
+    elsif
+      flash[:danger] = 'Idea not changed'
     end
+    redirect_to action: :index
   end
 
   private
