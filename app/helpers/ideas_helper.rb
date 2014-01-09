@@ -17,8 +17,12 @@ module IdeasHelper
   end
 
   def filterUnpublishedIdeas
-    at = Idea.arel_table
-    @ideas = @ideas.where(at[:published].eq(true).or(at[:user_id].eq(current_user.id)))
+    if user?
+      at = Idea.arel_table
+      @ideas = @ideas.where(at[:published].eq(true).or(at[:user_id].eq(current_user.id)))
+    elsif
+      @ideas = @ideas.where(published: true)
+    end
   end
 
 
