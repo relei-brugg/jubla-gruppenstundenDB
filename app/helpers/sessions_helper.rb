@@ -38,6 +38,10 @@ module SessionsHelper
     user? && (moderator? || Comment.find(comment_id).user_id == current_user.id)
   end
 
+  def not_idea_owner? (idea_id)
+    user? && (moderator? || Idea.find(idea_id).user_id != current_user.id)
+  end
+
   def idea_owner? (idea_id)
     user? && (moderator? || Idea.find(idea_id).user_id == current_user.id)
   end
@@ -67,6 +71,13 @@ module SessionsHelper
   def comment_owner
     unless comment_owner? (params[:id])
       flash[:warning] = 'Not your comment'
+      redirect_to(ideas_path)
+    end
+  end
+
+  def not_idea_owner
+    unless not_idea_owner? (params[:id])
+      flash[:warning] = 'You can not rate your own Idea'
       redirect_to(ideas_path)
     end
   end

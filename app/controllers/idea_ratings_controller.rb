@@ -1,5 +1,7 @@
 class IdeaRatingsController < ApplicationController
 
+  before_action :not_idea_owner, only: [:create, :update]
+
   def create
     # workaround for multiple votes, if first vote
     rating = IdeaRating.find_by_idea_id_and_user_id(params[:idea_rating][:idea_id], current_user.id)
