@@ -23,12 +23,25 @@ module IdeasHelper
     if (params[:idea])
       @search = Idea.new(idea_params)
 
+      if @search.location_categories.size > 0
+        @ideas = @ideas.includes(:location_categories).where('location_categories.id IN (?)', @search.location_category_ids)
+      end
+      if @search.method_categories.size > 0
+        @ideas = @ideas.includes(:method_categories).where('method_categories.id IN (?)', @search.method_category_ids)
+      end
+      if @search.activity_categories.size > 0
+        @ideas = @ideas.includes(:activity_categories).where('activity_categories.id IN (?)', @search.activity_category_ids)
+      end
       if @search.season_categories.size > 0
-        # get all ideas with selected seasons
+        @ideas = @ideas.includes(:season_categories).where('season_categories.id IN (?)', @search.season_category_ids)
       end
 
       if @search.title
         @ideas = @ideas.where("LOWER(title) LIKE ?", '%'+@search.title.downcase+'%')
+      end
+
+      if @search.material
+        @ideas = @ideas.where("LOWER(material) LIKE ?", '%'+@search.material.downcase+'%')
       end
 
       @ideas = @ideas.where('age_min <= ? AND age_max >= ?', @search.age_max, @search.age_min)
