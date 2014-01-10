@@ -5,30 +5,59 @@
   <% end %>
 </h1>
 <div class="show_idea">
-    <div class="row">
-      <header class="col-sm-2">Author:</header>
-      <span class="col-sm-2"><%= link_to @idea.user.name, @idea.user %></span>
-    </div>
-    <div class="row">
-      <header class="col-sm-2"><%= Idea.human_attribute_name(:created_at) %>:</header>
-      <span class="col-sm-2"><%= l(@idea.created_at) %></span>
-      <header class="col-sm-2"><%= Idea.human_attribute_name(:updated_at) %>:</header>
-      <span class="col-sm-2"><%= l(@idea.updated_at) %></span>
-    </div>
-    <div class="row">
-      <header class="col-sm-2"><%= t :avg_rating %>:</header>
-      <span class="col-sm-2"><%= render 'rating' %></span>
-      <header class="col-sm-2"><%= Idea.human_attribute_name(:views) %>:</header>
-      <span class="col-sm-2"><%= @idea.views %></span>
-    </div>
-    <div class="row">
-      <header class="col-sm-2"><%= Idea.human_attribute_name(:material) %>:</header>
-      <span class="col-sm-8"><%= @idea.material %></span>
-    </div>
+
+  <div class="row">
+    <header class="col-sm-2">Author:</header>
+    <span class="col-sm-2"><%= link_to @idea.user.name, @idea.user %></span>
+  </div>
+
+  <div class="row">
+    <header class="col-sm-2"><%= Idea.human_attribute_name(:created_at) %>:</header>
+    <span class="col-sm-4"><%= l(@idea.created_at) %></span>
+    <header class="col-sm-2"><%= Idea.human_attribute_name(:updated_at) %>:</header>
+    <span class="col-sm-4"><%= l(@idea.updated_at) %></span>
+  </div>
+
+  <div class="row">
+    <header class="col-sm-2"><%= t :avg_rating %>:</header>
+    <span class="col-sm-4"><%= render 'rating' %></span>
+    <header class="col-sm-2"><%= Idea.human_attribute_name(:views) %>:</header>
+    <span class="col-sm-4"><%= @idea.views %></span>
+  </div>
+
+  <div class="row">
+    <header class="col-sm-2"><%= Idea.human_attribute_name(:method_categories) %>:</header>
+    <span class="col-sm-4"><%= @idea.method_categories.map(&:name).join(', ') %></span>
+    <header class="col-sm-2"><%= Idea.human_attribute_name(:activity_categories) %>:</header>
+    <span class="col-sm-4"><%= @idea.activity_categories.map(&:name).join(', ') %></span>
+  </div>
+
+  <div class="row">
+    <header class="col-sm-2"><%= Idea.human_attribute_name(:season_categories) %>:</header>
+    <span class="col-sm-4"><%= @idea.season_categories.map(&:name).join(', ') %></span>
+    <header class="col-sm-2"><%= Idea.human_attribute_name(:location_categories) %>:</header>
+    <span class="col-sm-4"><%= @idea.location_categories.map(&:name).join(', ') %></span>
+  </div>
+
+  <div class="row">
+    <header class="col-sm-2">Wer:</header>
+    <span class="col-sm-4"><%= ((@idea.boys && @idea.girls) ? 'Knaben, Mädchen' : (@idea.girls ? 'Mädchen' : 'Knaben')) %></span>
+    <header class="col-sm-2">Alter:</header>
+    <span class="col-sm-4"><%= @idea.age_min %> - <%= @idea.age_max %> Jahre</span>
+    <header class="col-sm-2 col-sm-offset-6">Gruppengrösse:</header>
+    <span class="col-sm-4"><%= @idea.group_size_min %> - <%= @idea.group_size_max %> Kinder</span>
+  </div>
+
+  <div class="row">
+    <header class="col-sm-2"><%= Idea.human_attribute_name(:material) %>:</header>
+    <span class="col-sm-8"><%= @idea.material %></span>
+  </div>
+
   <div class="row">
     <header class="col-sm-2"><%= Idea.human_attribute_name(:security) %>:</header>
     <span class="col-sm-8"><%= @idea.security %></span>
   </div>
+
   <div class="row">
     <header class="col-sm-2"><%= Idea.human_attribute_name(:preparation) %>:</header>
     <span class="col-sm-8"><%= @idea.preparation %></span>
@@ -37,6 +66,7 @@
         <div><%= @idea.duration_preparation %> <%= t :minutes %></div>
     </span>
   </div>
+
   <div class="row">
     <header class="col-sm-2"><%= Idea.human_attribute_name(:start) %>:</header>
     <span class="col-sm-8"><%= raw @idea.start %></span>
@@ -45,6 +75,7 @@
         <div><%= @idea.duration_start %> <%= t :minutes %></div>
     </span>
   </div>
+
   <div class="row">
     <header class="col-sm-2"><%= Idea.human_attribute_name(:main_part) %>:</header>
     <span class="col-sm-8"><%= raw @idea.main_part %></span>
@@ -53,6 +84,7 @@
         <div><%= @idea.duration_main_part %> <%= t :minutes %></div>
     </span>
   </div>
+
   <div class="row">
     <header class="col-sm-2"><%= Idea.human_attribute_name(:end) %>:</header>
     <span class="col-sm-8"><%= raw @idea.end %></span>
