@@ -43,4 +43,7 @@ de:
     #    password: 'No special characters, please.'
       idea:
         duration_start: 'in Minuten'
+        duration_main_part: 'in Minuten'
+        duration_end: 'in Minuten'
+        duration_preparation: 'in Minuten'
 

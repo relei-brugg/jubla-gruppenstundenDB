@@ -113,6 +113,7 @@ class IdeasController < ApplicationController
                                    :age_max,
                                    :boys,
                                    :girls,
+                                   :preparation,
                                    method_category_ids: [],
                                    activity_category_ids: [],
                                    season_category_ids: [],

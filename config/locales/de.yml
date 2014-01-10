@@ -5,6 +5,8 @@ de:
   new_idea: 'Neue Gruppenstunde'
   sure?: 'Bist du sicher?'
   filter: 'Suchen'
+  minutes: 'Minuten'
+  avg_rating: 'Bewertung'
 
   time:
     formats:
@@ -36,7 +38,9 @@ de:
         title: 'Titel'
         location: 'Ort'
         duration: 'Dauer'
-        duration_preparation: 'Vorbereitung'
+        preparation: 'Vorbereitung'
+        views: 'Besuche'
+        duration_preparation: 'Vorbereitungszeit'
         duration_total: 'Gruppenstunde'
         duration_start: 'Dauer Einstieg'
         duration_main_part: 'Dauer Hauptteil'

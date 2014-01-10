@@ -38,6 +38,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'rmagick'
 
+gem 'activerecord-session_store'
+
 gem 'turbolinks', '2.0.0'
 gem 'bcrypt-ruby', '3.1.2'
 

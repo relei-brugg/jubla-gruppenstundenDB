@@ -72,6 +72,21 @@ footer {
   }
 }
 
+/* ideas */
+.show_idea {
+  .row {
+    padding: 5px 0px 5px 0px;
+    border-bottom: 1px lightgray solid;
+    &:hover {
+      background-color: #eeeeee;
+    }
+  }
+
+  header {
+    font-weight: bold;
+  }
+}
+
 /* miscellaneous */
 .debug_dump {
   clear: both;
