@@ -25,14 +25,20 @@
               <%= link_to idea.user.name, idea.user %>
             </td>
             <td>
-              <%= link_to_if_with_block moderator?, toggle_published_idea_path(idea) do %>
-                  <span class="label <%= idea.published? ? 'label-success' : 'label-danger' %>"><%= idea.published? ? 'published' : 'unpublished' %></span>
+              <% if moderator? %>
+                  <%= link_to toggle_published_idea_path(idea), class: 'label '+(idea.published? ? 'label-success' : 'label-danger') do %>
+                      <%= idea.published? ? 'published' : 'unpublished' %>
+                  <% end %>
+              <% else %>
+                  <span class="label <%= idea.published? ? 'label-success' : 'label-danger' %>">
+                      <%= idea.published? ? 'published' : 'unpublished' %>
+                  </span>
               <% end %>
             </td>
             <td>
               <% if idea_owner?(idea.id) || moderator? %>
-                  <%= link_to edit_idea_path(idea) do %><span class="glyphicon glyphicon-pencil green"></span><% end %>
-                  <%= link_to idea_path(idea), method: :delete, data: { confirm: t(:sure?) } do %><span class="glyphicon glyphicon-remove red"></span><% end %>
+                  <%= link_to '', edit_idea_path(idea), class: 'glyphicon glyphicon-pencil green' %>
+                  <%= link_to '', idea_path(idea), method: :delete, data: { confirm: t(:sure?) }, class: 'glyphicon glyphicon-remove red' %>
               <% end %>
             </td>
           </tr>

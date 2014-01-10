@@ -33,3 +33,9 @@ section {
   @extend .row;
   margin-top: 20px;
 }
+
+
+// other
+a.glyphicon:hover {
+  text-decoration: none;
+}
