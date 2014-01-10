@@ -26,13 +26,9 @@
             </td>
             <td>
               <% if moderator? %>
-                  <%= link_to toggle_published_idea_path(idea), class: 'label '+(idea.published? ? 'label-success' : 'label-danger') do %>
-                      <%= idea.published? ? 'published' : 'unpublished' %>
-                  <% end %>
+                  <%= link_to idea.published? ? 'published' : 'unpublished', toggle_published_idea_path(idea), class: 'label '+(idea.published? ? 'label-success' : 'label-danger') %>
               <% else %>
-                  <span class="label <%= idea.published? ? 'label-success' : 'label-danger' %>">
-                      <%= idea.published? ? 'published' : 'unpublished' %>
-                  </span>
+                  <span class="label <%= idea.published? ? 'label-success' : 'label-danger' %>"><%= idea.published? ? 'published' : 'unpublished' %></span>
               <% end %>
             </td>
             <td>

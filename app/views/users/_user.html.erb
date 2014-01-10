@@ -4,16 +4,22 @@
     </div>
 
     <div class="col-md-2">
-        <%= link_to_if_with_block moderator?, toggle_moderator_user_path(user) do %>
-            <span class="label <%= user.moderator? ? 'label-success' : 'label-default' %>">Moderator</span>
-        <% end %>
-        <%= link_to_if_with_block admin?, toggle_admin_user_path(user) do %>
-            <span class="label <%= user.admin? ? 'label-success' : 'label-default' %>">Admin</span>
-        <% end %>
-        <% if admin? && !user_owner?(user) %>
-            <%= link_to user_path(user), method: :delete, data: { confirm: t(:sure?) } do %>
-                <span class="glyphicon glyphicon-remove red"></span>
-            <% end %>
-        <% end %>
+      <span>
+          <% if moderator? %>
+              <%= link_to 'Moderator', toggle_moderator_user_path(user), class: 'label '+(user.moderator? ? 'label-success' : 'label-danger') %>
+          <% else %>
+              <span class="label <%= user.moderator? ? 'label-success' : 'label-danger' %>">Moderator</span>
+          <% end %>
+      </span>
+      <span>
+          <% if admin? %>
+              <%= link_to 'Admin', toggle_admin_user_path(user), class: 'label '+(user.admin? ? 'label-success' : 'label-danger') %>
+          <% else %>
+              <span class="label <%= user.admin? ? 'label-success' : 'label-danger' %>">Admin</span>
+          <% end %>
+          <% if admin? && !user_owner?(user) %>
+              <%= link_to user_path(user), method: :delete, data: { confirm: t(:sure?) }, class: 'glyphicon glyphicon-remove red' %>
+          <% end %>
+      </span>
     </div>
 </div>
