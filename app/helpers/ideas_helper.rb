@@ -42,7 +42,7 @@ module IdeasHelper
       end
 
       if @filter.content != ''
-        @ideas = @ideas.where("LOWER(start) LIKE ? OR LOWER(main_part) LIKE ? OR LOWER(end) LIKE ?", ls(@filter.content), ls(@filter.content), ls(@filter.content))
+        @ideas = @ideas.where("(LOWER(start) LIKE ? OR LOWER(main_part) LIKE ? OR LOWER(end) LIKE ?)", ls(@filter.content), ls(@filter.content), ls(@filter.content))
       end
 
       # associations filter
