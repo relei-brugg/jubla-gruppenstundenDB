@@ -26,7 +26,7 @@ class IdeasController < ApplicationController
   end
 
   def top_rated
-    @ideas = Idea.all.includes(:idea_ratings).group('ideas.id').order('avg(idea_ratings.rating) desc').page(params[:page])
+    @ideas = Idea.all.includes(:idea_ratings).select('avg(idea_ratings.rating)').group('ideas.id').order('avg(idea_ratings.rating) desc').page(params[:page])
 
     filterUnpublishedIdeas if !moderator?
     filterIdeas
