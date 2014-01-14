@@ -4,13 +4,59 @@ class IdeasController < ApplicationController
 
   before_action :signed_in_user, only: [:new, :create]
   before_action :idea_owner,     only: [:edit, :update, :destroy]
-  before_action :moderator_user, only: [:toggle_published]
-
+  before_action :moderator_user, only: [:toggle_published, :unpublished]
 
   def index
-    @ideas = Idea.all
+    @ideas = Idea.order(:title).page(params[:page])
+
     filterUnpublishedIdeas if !moderator?
     filterIdeas
+
+    @title = 'Gruppenstunden'
+    @table = 'default'
+  end
+
+  def unpublished
+    @ideas = Idea.where(published: false).page(params[:page])
+    filterIdeas
+
+    @title = 'Unveröffentlichte Gruppenstunden'
+    @table = 'default'
+    render 'index'
+  end
+
+  def top_rated
+    @ideas = Idea.all.includes(:idea_ratings).order('avg(idea_ratings.rating) desc').group('ideas.id').page(params[:page])
+
+    filterUnpublishedIdeas if !moderator?
+    filterIdeas
+
+    @title = 'Beste Gruppenstunden'
+    @table = 'default'
+    render 'index'
+  end
+
+  def most_viewed
+    @ideas = Idea.all.order('views desc').page(params[:page])
+
+    filterUnpublishedIdeas if !moderator?
+    filterIdeas
+
+    @title = 'Beliebteste Gruppenstunden'
+    @table = 'default'
+    render 'index'
+  end
+
+  def user
+    user = User.find(params[:id])
+    @ideas = Idea.where(user: user).page(params[:page])
+
+    filterUnpublishedIdeas if (user != current_user)
+    filterIdeas
+
+    @title = User.find(params[:id]).name + "'s Gruppenstunden"
+    @table = (user == current_user) ? 'user_view' : 'default'
+    render 'index'
   end
 
   def show

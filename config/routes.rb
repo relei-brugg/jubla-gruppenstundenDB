@@ -15,12 +15,19 @@ GruppenstundenDB::Application.routes.draw do
     member do
       get 'toggle_moderator'
       get 'toggle_admin'
+      get 'ideas', to: 'ideas#user'
     end
   end
+
   resources :ideas do
     resources :comments
     member do
-      get 'toggle_published'
+      post 'toggle_published'
+    end
+    collection do
+      get 'unpublished'
+      get 'top_rated'
+      get 'most_viewed'
     end
   end
   resources :idea_ratings, only: [:create, :update]

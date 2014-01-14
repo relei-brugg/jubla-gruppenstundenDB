@@ -22,6 +22,8 @@ class Idea < ActiveRecord::Base
   validates :group_size_min,       if: lambda { current_step_name == 'kids' }, numericality: {only_integer: true, greater_than_or_equal_to: 0 }, presence: true
   validates :group_size_min,       if: lambda { current_step_name == 'kids' }, numericality: {only_integer: true, greater_than_or_equal_to: 0 }, presence: true
 
+  self.per_page = 10
+
   # Multistep form code
   include MultistepModel
 

@@ -1,0 +1,31 @@
+<table class="table table-striped">
+  <thead><tr>
+    <th>Title</th>
+    <th>Rating</th>
+    <th>Views</th>
+    <th>Published</th>
+    <th>Actions</th>
+  </tr></thead>
+  <tbody>
+  <% @ideas.each do |idea| %>
+      <tr>
+        <td>
+          <%= link_to idea.title, idea %>
+        </td>
+        <td>
+          <%= idea.idea_ratings.size > 0 ? idea.idea_ratings.average(:rating) : '-' %>
+        </td>
+        <td>
+          <%= idea.views %>
+        </td>
+        <td>
+          <span class="label <%= idea.published? ? 'label-success' : 'label-danger' %>"><%= idea.published? ? 'published' : 'unpublished' %></span>
+        </td>
+        <td>
+          <%= link_to '', edit_idea_path(idea), class: 'glyphicon glyphicon-pencil green' %>
+          <%= link_to '', idea_path(idea), method: :delete, data: { confirm: t(:sure?) }, class: 'glyphicon glyphicon-remove red' %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

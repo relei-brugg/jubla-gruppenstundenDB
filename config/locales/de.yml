@@ -59,6 +59,9 @@ de:
         method_categories: 'Was'
         season_categories: 'Jahreszeit'
 
+  will_paginate:
+    previous_label: "&#8592;"
+    next_label: "&#8594;"
 
   helpers:
     submit:

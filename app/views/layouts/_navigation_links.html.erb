@@ -1,7 +1,22 @@
 
 <li><%= link_to "Home", root_path %></li>
 <% if user? %><li><%= link_to "Users", users_path %></li><% end %>
-<li><%= link_to "Gruppenstunden", ideas_path %></li>
+
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gruppenstunden <b class="caret"></b></a>
+
+  <ul class="dropdown-menu">
+    <li><%= link_to "Alle", ideas_path %></li>
+    <li><%= link_to "Best Bewertete", top_rated_ideas_path %></li>
+    <li><%= link_to "Meist Besuchte", most_viewed_ideas_path %></li>
+    <% if moderator? && Idea.where(published: false).count > 0 %>
+        <li><%= link_to unpublished_ideas_path do %>
+            Unveröffentlichte <span class="badge"><%= Idea.where(published: false).count %></span>
+        <% end %></li>
+    <% end %>
+  </ul>
+
+</li>
 
 <% if user? %>
 
@@ -9,13 +24,14 @@
     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
 
     <ul class="dropdown-menu">
-      <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+      <li><%= link_to "Einstellungen", edit_user_path(current_user) %></li>
+      <li><%= link_to "Meine Gruppenstunden", ideas_user_path(current_user) %></li>
       <li class="divider"></li>
-      <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+      <li><%= link_to "Abmelden", signout_path, method: "delete" %></li>
     </ul>
 
   </li>
 
 <% else %>
-  <li><%= link_to "Sign in", signin_path %></li>
+  <li><%= link_to "Einloggen", signin_path %></li>
 <% end %>

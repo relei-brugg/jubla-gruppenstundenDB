@@ -1,49 +1,10 @@
-<!--<h1><%= Idea.model_name.human(count: 2) %></h1>-->
+<h1>
+  <%= @title %>
+  <%= link_to t(:new_idea), new_idea_path, class: 'btn btn-primary pull-right' %><br>
+</h1>
 
 <%= render 'filter' %>
 
-<div class="row">
-    <div class="col-md-12">
-        <h1>
-          <%= Idea.model_name.human(count: 2) %>
-          <%= link_to t(:new_idea), new_idea_path, class: 'btn btn-primary pull-right' %><br>
-        </h1>
+<%= render 'table_'+@table %>
 
-
-        <table class="table table-striped">
-          <thead><tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Published</th>
-            <th>Actions</th>
-          </tr></thead>
-          <tbody>
-        <% @ideas.each do |idea| %>
-          <tr>
-            <td>
-              <%= link_to idea.title, idea %>
-
-            </td>
-            <td>
-              <%= link_to idea.user.name, idea.user %>
-            </td>
-            <td>
-              <% if moderator? %>
-                  <%= link_to idea.published? ? 'published' : 'unpublished', toggle_published_idea_path(idea), class: 'label '+(idea.published? ? 'label-success' : 'label-danger') %>
-              <% else %>
-                  <span class="label <%= idea.published? ? 'label-success' : 'label-danger' %>"><%= idea.published? ? 'published' : 'unpublished' %></span>
-              <% end %>
-            </td>
-            <td>
-              <% if idea_owner?(idea.id) || moderator? %>
-                  <%= link_to '', edit_idea_path(idea), class: 'glyphicon glyphicon-pencil green' %>
-                  <%= link_to '', idea_path(idea), method: :delete, data: { confirm: t(:sure?) }, class: 'glyphicon glyphicon-remove red' %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-          </tbody>
-        </table>
-
-    </div>
-</div>
+<div class="center"><%= will_paginate %></div>

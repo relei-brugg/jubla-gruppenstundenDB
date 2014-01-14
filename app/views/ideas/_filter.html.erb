@@ -1,10 +1,10 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4 class="panel-title"><a data-toggle="collapse" href="#collapseFilter">Filter</a></h4>
+    <h4 class="panel-title"><a data-toggle="collapse" href="#collapseFilter">Filter <b class="caret"></b></a></h4>
   </div>
   <div id="collapseFilter" class="panel-collapse collapse">
     <div class="panel-body">
-      <%= simple_form_for @filter, url: { controller: 'ideas', action: 'index' }, wrapper: :vertical, html: { class: 'form-vertical', method: :get } do |f| %>
+      <%= simple_form_for @filter, url: { controller: 'ideas', action: params[:action] }, wrapper: :vertical, html: { class: 'form-vertical', method: :get } do |f| %>
           <div class="row">
             <div class="col-md-2"><%= f.input :title %></div>
             <div class="col-md-2"><%= f.input :material %></div>
