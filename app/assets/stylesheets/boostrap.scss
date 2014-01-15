@@ -6,9 +6,15 @@ $font-family-serif:       Century, Times, serif !default;
 @import "bootstrap";
 
 // make all images responsive by default
-img {
-  @extend .img-responsive;
-  margin: 0 auto;
+//img {
+//  @extend .img-responsive;
+//  margin: 0 auto;
+//}
+
+.beta {
+  color: red;
+  font-size: 0.7em;
+  font-weight: normal;
 }
 
 .navbar-brand {
