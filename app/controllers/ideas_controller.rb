@@ -67,11 +67,13 @@ class IdeasController < ApplicationController
       @idea_rating = IdeaRating.new(idea: @idea, user: current_user) unless @idea_rating
     end
 
-    IdeaVisit.visitIdea(@idea, request.remote_ip)
+    IdeaVisit.visit(@idea, request.remote_ip)
   end
 
   def print
     @idea = Idea.find(params[:id])
+
+    IdeaVisit.visit(@idea, request.remote_ip, true)
     
     respond_to do |format|
       format.html

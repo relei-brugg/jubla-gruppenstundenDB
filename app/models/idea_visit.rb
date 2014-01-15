@@ -2,21 +2,21 @@ class IdeaVisit < ActiveRecord::Base
   belongs_to :idea
 
 
-  def self.visitIdea(idea, ip)
 
-    visit = IdeaVisit.find_by_idea_id_and_ip(idea.id, ip)
+  def self.visit(idea, ip, download=false)
+    visit = IdeaVisit.find_by_idea_id_and_ip_and_download(idea.id, ip, download)
 
     if !visit || visit.updated_at < 1.day.ago
       #update visit
-      visit = IdeaVisit.create(idea: idea, ip: ip) if !visit
+      visit = IdeaVisit.create(idea: idea, ip: ip, download: download) if !visit
       visit.updated_at = Time.now
       visit.save
 
       #update idea-views
-      idea.views += 1
+      idea.views += 1 if !download
+      idea.downloads += 1 if download
       idea.update_record_without_timestamping
     end
-
   end
 
 end

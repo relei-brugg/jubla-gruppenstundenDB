@@ -24,6 +24,8 @@
     <span class="col-sm-4"><%= render 'rating' %></span>
     <header class="col-sm-2"><%= Idea.human_attribute_name(:views) %>:</header>
     <span class="col-sm-4"><%= @idea.views %></span>
+    <header class="col-sm-2 col-sm-offset-6"><%= Idea.human_attribute_name(:downloads) %>:</header>
+    <span class="col-sm-4"><%= @idea.downloads  %></span>
   </div>
 
   <div class="row">
