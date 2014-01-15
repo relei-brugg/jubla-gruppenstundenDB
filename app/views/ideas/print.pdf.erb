@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title><%= full_title(yield(:title)) %></title>
+
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Gruppenstunden Db" %>">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <%= wicked_pdf_stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<h1>
+  <%= @idea.title %>
+</h1>
+<table>
+
+  <tr>
+    <th>Author:</th>
+    <td><%= @idea.user.name %></td>
+  </tr>
+
+  <tr>
+    <th><%= Idea.human_attribute_name(:method_categories) %>:</th>
+    <td><%= @idea.method_categories.collect(&:name).join(', ') %></td>
+    <th><%= Idea.human_attribute_name(:information) %>:</th>
+    <td><%= @idea.information %>&nbsp;</td>
+    <th><%= Idea.human_attribute_name(:activity_categories) %>:</th>
+    <td><%= @idea.activity_categories.collect(&:name).join(', ') %></td>
+  </tr>
+
+  <tr>
+    <th><%= Idea.human_attribute_name(:season_categories) %>:</th>
+    <td><%= @idea.season_categories.collect(&:name).join(', ') %></td>
+    <th><%= Idea.human_attribute_name(:location_categories) %>:</th>
+    <td><%= @idea.location_categories.collect(&:name).join(', ') %></td>
+    <th><%= Idea.human_attribute_name(:location) %>:</th>
+    <td><%= @idea.location %></td>
+  </tr>
+
+  <tr>
+    <th>Wer:</th>
+    <td><%= ((@idea.boys && @idea.girls) ? 'Knaben, Mädchen' : (@idea.girls ? 'Mädchen' : 'Knaben')) %></td>
+    <th>Gruppengrösse:</th>
+    <td><%= @idea.group_size_min %> - <%= @idea.group_size_max %> Kinder</td>
+    <th>Alter:</th>
+    <td><%= @idea.age_min %> - <%= @idea.age_max %> Jahre</td>
+  </tr>
+
+  <tr>
+    <th><%= Idea.human_attribute_name(:material) %>:</th>
+    <td><%= @idea.material %></td>
+  </tr>
+
+  <tr>
+    <th><%= Idea.human_attribute_name(:security) %>:</th>
+    <td><%= @idea.security %></td>
+  </tr>
+
+  <tr>
+    <th><%= Idea.human_attribute_name(:remarks) %>:</th>
+    <td><%= @idea.remarks %></td>
+  </tr>
+
+  <tr>
+    <th><%= Idea.human_attribute_name(:preparation) %>:</th>
+    <td><%= @idea.preparation %></td>
+    <td>
+        <th><%= Idea.human_attribute_name(:duration_preparation) %>:</th>
+        <td><%= @idea.duration_preparation %> <%= t :minutes %></td>
+    </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th><%= Idea.human_attribute_name(:start) %>:</th>
+    <td><%= raw @idea.start %></td>
+    <td>
+        <th><%= Idea.human_attribute_name(:duration_start) %>:</th>
+        <td><%= @idea.duration_start %> <%= t :minutes %></td>
+    </td>
+  </tr>
+
+  <tr>
+    <th><%= Idea.human_attribute_name(:main_part) %>:</th>
+    <td><%= raw @idea.main_part %></td>
+    <td>
+        <th><%= Idea.human_attribute_name(:duration_main_part) %>:</th>
+        <td><%= @idea.duration_main_part %> <%= t :minutes %></td>
+    </td>
+  </tr>
+
+  <tr>
+    <th><%= Idea.human_attribute_name(:end) %>:</th>
+    <td><%= raw @idea.end %></td>
+    <td>
+        <th><%= Idea.human_attribute_name(:duration_end) %>:</th>
+        <td><%= @idea.duration_end %> <%= t :minutes %></td>
+    </td>
+  </tr>
+</table>
+
+
+</body>
+</html>

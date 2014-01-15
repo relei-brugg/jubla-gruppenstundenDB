@@ -23,6 +23,7 @@ GruppenstundenDB::Application.routes.draw do
     resources :comments
     member do
       post 'toggle_published'
+      get 'print'
     end
     collection do
       get 'unpublished'

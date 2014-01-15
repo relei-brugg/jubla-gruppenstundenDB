@@ -4,6 +4,7 @@
       <small><%= link_to edit_idea_path(@idea) do %><span class="glyphicon glyphicon-pencil green"></span><% end %></small>
   <% end %>
 </h1>
+<%= link_to 'Create PDF document', print_idea_path(@idea, format: :pdf) %>
 <div class="show_idea">
 
   <div class="row">
@@ -103,7 +104,6 @@
     </span>
   </div>
 </div>
-
 <h2><%= Comment.model_name.human(count: 2) %></h2>
 <%= render @idea.comments.order('created_at DESC') %>
 

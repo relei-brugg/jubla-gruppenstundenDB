@@ -62,12 +62,23 @@ class IdeasController < ApplicationController
   def show
     @idea = Idea.find(params[:id])
 
-    if user?
+    if not_idea_owner? (params[:id])
       @idea_rating = @idea.idea_ratings.find_by_user_id(current_user.id)
       @idea_rating = IdeaRating.new(idea: @idea, user: current_user) unless @idea_rating
     end
 
     IdeaVisit.visitIdea(@idea, request.remote_ip)
+  end
+
+  def print
+    @idea = Idea.find(params[:id])
+    
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'print', layout: false
+      end
+    end
   end
 
   def new
