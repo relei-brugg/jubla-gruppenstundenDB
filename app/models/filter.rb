@@ -17,6 +17,19 @@ class Filter
   attr_accessor :boys
   attr_accessor :girls
 
+  def method_category_ids= (ids)
+    @method_category_ids = ids.reject(&:blank?).map(&:to_i)
+  end
+  def activity_category_ids= (ids)
+    @activity_category_ids = ids.reject(&:blank?).map(&:to_i)
+  end
+  def season_category_ids= (ids)
+    @season_category_ids = ids.reject(&:blank?).map(&:to_i)
+  end
+  def location_category_ids= (ids)
+    @location_category_ids = ids.reject(&:blank?).map(&:to_i)
+  end
+
   def initialize(attributes = {})
     attributes.each do |name, value|
       send("#{name}=", value)

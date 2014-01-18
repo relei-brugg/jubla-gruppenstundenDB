@@ -48,16 +48,16 @@ module IdeasHelper
       end
 
       # associations filter
-      if @filter.method_category_ids.size > 1
+      if @filter.method_category_ids.size > 0
         @ideas = @ideas.includes(:method_categories).where('method_categories.id IN (?)', @filter.method_category_ids)
       end
-      if @filter.location_category_ids.size > 1
+      if @filter.location_category_ids.size > 0
         @ideas = @ideas.includes(:location_categories).where('location_categories.id IN (?)', @filter.location_category_ids)
       end
-      if @filter.activity_category_ids.size > 1
+      if @filter.activity_category_ids.size > 0
         @ideas = @ideas.includes(:activity_categories).where('activity_categories.id IN (?)', @filter.activity_category_ids)
       end
-      if @filter.season_category_ids.size > 1
+      if @filter.season_category_ids.size > 0
         @ideas = @ideas.includes(:season_categories).where('season_categories.id IN (?)', @filter.season_category_ids)
       end
 
