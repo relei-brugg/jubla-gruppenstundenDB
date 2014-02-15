@@ -17,6 +17,12 @@ class IdeaVisit < ActiveRecord::Base
       idea.downloads += 1 if download
       idea.update_record_without_timestamping
     end
+
+    cleanVisits
+  end
+
+  def self.cleanVisits
+    IdeaVisit.destroy_all (["updated_at < ?", Time.now - 1.day])
   end
 
 end
