@@ -3,8 +3,16 @@
 
 <%= will_paginate %>
 
-<div class="users">
+<table class="table table-striped">
+  <thead><tr>
+    <th>Name</th>
+    <th>Rechte</th>
+    <% if admin? %>
+        <th>Aktionen</th>
+    <% end %>
+  </tr></thead>
+
   <%= render @users %>
-</div>
+</table>
 
 <%= will_paginate %>
