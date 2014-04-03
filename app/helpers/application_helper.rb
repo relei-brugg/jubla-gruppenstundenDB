@@ -21,4 +21,8 @@ module ApplicationHelper
       capture &block
     end
   end
+
+  def replace_redactor_images (text)
+    text.gsub('<img src="', '<img src="file://' + Rails.root.to_s + '/public')
+  end
 end

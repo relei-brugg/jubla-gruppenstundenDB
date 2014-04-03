@@ -78,17 +78,17 @@
     </tr>
     <tr class="row">
       <td class="cell header-cell"><%= Idea.human_attribute_name(:start) %></td>
-      <td class="cell"><%= raw @idea.start %></td>
+      <td class="cell"><%= raw replace_redactor_images (@idea.start) %></td>
       <td class="cell right-cell"><%= @idea.duration_start %> <%= t :minutes %></td>
     </tr>
     <tr class="row">
       <td class="cell header-cell"><%= Idea.human_attribute_name(:main_part) %></td>
-      <td class="cell"><%= raw @idea.main_part %></td>
+      <td class="cell"><%= raw replace_redactor_images (@idea.main_part) %></td>
       <td class="cell right-cell"><%= @idea.duration_main_part %> <%= t :minutes %></td>
     </tr>
     <tr class="row">
       <td class="cell header-cell"><%= Idea.human_attribute_name(:end) %></td>
-      <td class="cell"><%= raw @idea.end %></td>
+      <td class="cell"><%= raw replace_redactor_images (@idea.end) %></td>
       <td class="cell right-cell"><%= @idea.duration_end %> <%= t :minutes %></td>
     </tr>
 </table>
