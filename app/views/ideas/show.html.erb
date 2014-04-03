@@ -1,10 +1,16 @@
 <h1>
   <%= @idea.title %>
-  <% if idea_owner?(@idea.id) %>
-      <small><%= link_to edit_idea_path(@idea) do %><span class="glyphicon glyphicon-pencil green"></span><% end %></small>
-  <% end %>
+
+  <span class="pull-right">
+      <% if idea_owner?(@idea.id) %>
+          <%= link_to idea_path(@idea), method: :delete, data: { confirm: t(:sure?) }, class: 'btn btn-danger' do %><span class="glyphicon glyphicon-remove"></span> <%= t(:delete) %><% end %>
+          <%= link_to edit_idea_path(@idea), class: 'btn btn-success' do %><span class="glyphicon glyphicon-pencil"></span> <%= t(:edit) %><% end %>
+      <% end %>
+      <%= link_to print_idea_path(@idea, format: :pdf), class: 'btn btn-primary' do %><span class="glyphicon glyphicon-print"></span> <%= t(:print) %><% end %>
+  </span>
 </h1>
-<%= link_to 'Create PDF document', print_idea_path(@idea, format: :pdf) %>
+
+
 <div class="show_idea">
 
   <div class="row">
@@ -110,7 +116,6 @@
 <%= render @idea.comments.order('created_at DESC') %>
 
 <% if user? %>
-    <h2>Add a comment:</h2>
     <%= render "comments/form" %>
 <% end %>
 

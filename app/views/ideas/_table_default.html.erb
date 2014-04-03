@@ -1,12 +1,12 @@
 <table class="table table-striped">
     <thead><tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Rating</th>
-        <th>Views</th>
+        <th><%= Idea.human_attribute_name(:title) %></th>
+        <th><%= Idea.human_attribute_name(:author) %></th>
+        <th><%= Idea.human_attribute_name(:rating) %></th>
+        <th><%= Idea.human_attribute_name(:views) %></th>
         <% if moderator? %>
-          <th>Published</th>
-          <th>Actions</th>
+          <th><%= Idea.human_attribute_name(:published) %></th>
+          <th><%= t(:actions) %></th>
         <% end %>
     </tr></thead>
     <tbody>
@@ -19,18 +19,18 @@
             <%= link_to idea.user.name, idea.user %>
         </td>
         <td>
-            <%= idea.idea_ratings.size > 0 ? idea.idea_ratings.average(:rating) : '-' %>
+            <%= idea.idea_ratings.size > 0 ? idea.idea_ratings.average(:rating).round(2) : '-' %>
         </td>
         <td>
             <%= idea.views %>
         </td>
         <% if moderator? %>
             <td>
-                <%= link_to idea.published? ? 'published' : 'unpublished', toggle_published_idea_path(idea), method: 'post', class: 'label '+(idea.published? ? 'label-success' : 'label-danger') %>
+                <%= link_to idea.published? ? t(:published) : t(:unpublished), toggle_published_idea_path(idea), method: 'post', class: 'label '+(idea.published? ? 'label-success' : 'label-danger') %>
             </td>
             <td>
-                <%= link_to '', edit_idea_path(idea), class: 'glyphicon glyphicon-pencil green' %>
-                <%= link_to '', idea_path(idea), method: :delete, data: { confirm: t(:sure?) }, class: 'glyphicon glyphicon-remove red' %>
+              <%= link_to edit_idea_path(idea), class: 'btn btn-xs btn-success' do %><span class="glyphicon glyphicon-pencil"></span> <%= t(:edit) %><% end %>
+              <%= link_to idea_path(idea), method: :delete, data: { confirm: t(:sure?) }, class: 'btn btn-xs btn-danger' do %><span class="glyphicon glyphicon-remove"></span> <%= t(:delete) %><% end %>
             </td>
       <% end %>
     </tr>

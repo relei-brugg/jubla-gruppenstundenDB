@@ -1,6 +1,6 @@
 <h1>
   <%= @title %>
-  <%= link_to t(:new_idea), new_idea_path, class: 'btn btn-primary pull-right' %><br>
+  <%= link_to new_idea_path, class: 'btn btn-primary pull-right' do %><span class="glyphicon glyphicon-plus"></span> <%= t(:new_idea) %><% end %><br>
 </h1>
 
 <%= render 'filter' %>

@@ -7,6 +7,12 @@ de:
   filter: 'Suchen'
   minutes: 'Minuten'
   avg_rating: 'Bewertung'
+  edit: 'Bearbeiten'
+  delete: 'Löschen'
+  print: 'Drucken'
+  actions: 'Aktionen'
+  published: 'veröffentlicht'
+  unpublished: 'unveröffentlicht'
 
   time:
     formats:
@@ -39,7 +45,9 @@ de:
         location: 'Ort'
         duration: 'Dauer'
         preparation: 'Vorbereitung'
+        rating: 'Bewertung'
         views: 'Besuche'
+        published: 'Veröffentlicht'
         duration_preparation: 'Vorbereitungszeit'
         duration_total: 'Gruppenstunde'
         duration_start: 'Dauer Einstieg'

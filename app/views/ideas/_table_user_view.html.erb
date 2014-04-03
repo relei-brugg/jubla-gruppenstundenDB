@@ -13,7 +13,7 @@
           <%= link_to idea.title, idea %>
         </td>
         <td>
-          <%= idea.idea_ratings.size > 0 ? idea.idea_ratings.average(:rating) : '-' %>
+          <%= idea.idea_ratings.size > 0 ? idea.idea_ratings.average(:rating).round(2) : '-' %>
         </td>
         <td>
           <%= idea.views %>
