@@ -39,6 +39,7 @@ gem 'mini_magick'
 gem 'rmagick'
 
 gem 'wicked_pdf'
+gem "wkhtmltopdf-heroku"
 
 gem 'activerecord-session_store'
 

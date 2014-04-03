@@ -38,25 +38,25 @@
     <td class="cell"><%= @idea.season_categories.collect(&:name).join(', ') %></td>
   </tr>
   <tr class="row">
-    <td class="cell header-cell"><%= Idea.human_attribute_name(:activity_categories) %>:</td>
+    <td class="cell header-cell"><%= Idea.human_attribute_name(:activity_categories) %></td>
     <td class="cell"><%= @idea.activity_categories.collect(&:name).join(', ') %></td>
-    <td class="cell header-cell"><%= Idea.human_attribute_name(:method_categories) %>:</td>
+    <td class="cell header-cell"><%= Idea.human_attribute_name(:method_categories) %></td>
     <td class="cell"><%= @idea.method_categories.collect(&:name).join(', ') %></td>
   </tr>
   <tr class="row">
-    <td class="cell header-cell"><%= Idea.human_attribute_name(:material) %>:</td>
+    <td class="cell header-cell"><%= Idea.human_attribute_name(:material) %></td>
     <td class="cell" colspan="3"><%= @idea.material %></td>
   </tr>
   <tr class="row">
-    <td class="cell header-cell"><%= Idea.human_attribute_name(:security) %>:</td>
+    <td class="cell header-cell"><%= Idea.human_attribute_name(:security) %></td>
     <td class="cell" colspan="3"><%= @idea.security %></td>
   </tr>
   <tr class="row">
-    <td class="cell header-cell"><%= Idea.human_attribute_name(:remarks) %>:</td>
+    <td class="cell header-cell"><%= Idea.human_attribute_name(:remarks) %></td>
     <td class="cell" colspan="3"><%= @idea.remarks %></td>
   </tr>
   <tr class="row">
-    <td class="cell header-cell"><%= Idea.human_attribute_name(:information) %>:</td>
+    <td class="cell header-cell"><%= Idea.human_attribute_name(:information) %></td>
     <td class="cell"><%= @idea.information %>&nbsp;</td>
     <td class="cell header-cell">Autor</td>
     <td class="cell"><%= @idea.user.name %></td>
@@ -72,22 +72,22 @@
       <td class="cell header-cell right-cell" stlye="border-right: 1px solid #000;" width="80">Dauer</td>
     </tr>
     <tr class="row">
-      <td class="cell header-cell"><%= Idea.human_attribute_name(:preparation) %>:</td>
+      <td class="cell header-cell"><%= Idea.human_attribute_name(:preparation) %></td>
       <td class="cell"><%= @idea.preparation %></td>
       <td class="cell right-cell"><%= @idea.duration_preparation %> <%= t :minutes %></td>
     </tr>
     <tr class="row">
-      <td class="cell header-cell"><%= Idea.human_attribute_name(:start) %>:</td>
+      <td class="cell header-cell"><%= Idea.human_attribute_name(:start) %></td>
       <td class="cell"><%= raw @idea.start %></td>
       <td class="cell right-cell"><%= @idea.duration_start %> <%= t :minutes %></td>
     </tr>
     <tr class="row">
-      <td class="cell header-cell"><%= Idea.human_attribute_name(:main_part) %>:</td>
+      <td class="cell header-cell"><%= Idea.human_attribute_name(:main_part) %></td>
       <td class="cell"><%= raw @idea.main_part %></td>
       <td class="cell right-cell"><%= @idea.duration_main_part %> <%= t :minutes %></td>
     </tr>
     <tr class="row">
-      <td class="cell header-cell"><%= Idea.human_attribute_name(:end) %>:</td>
+      <td class="cell header-cell"><%= Idea.human_attribute_name(:end) %></td>
       <td class="cell"><%= raw @idea.end %></td>
       <td class="cell right-cell"><%= @idea.duration_end %> <%= t :minutes %></td>
     </tr>
