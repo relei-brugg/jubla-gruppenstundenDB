@@ -1,5 +1,5 @@
-<% provide(:title, 'Sign in') %>
-<h1>Sign in</h1>
+<% provide(:title, 'Anmeldung') %>
+<h1>Anmeldung</h1>
 
 
 <%= simple_form_for :sessions, url: sessions_path, html: {:class => 'form-horizontal'} do |f| %>
@@ -10,4 +10,4 @@
     <%= f.button :submit, class: 'col-sm-offset-2' %>
 <% end %>
 
-<p class="col-sm-offset-2">New user? <%= link_to 'Sign up now!', signup_path %></p>
+<p class="col-sm-offset-2">Noch kein Acccount? <%= link_to 'Melde dich jetzt an!', signup_path %></p>

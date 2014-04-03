@@ -1,0 +1,52 @@
+
+#print {
+  font-family: "Century Gothic";
+  font-size: 12px;
+
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  table {
+    tr {
+      td {
+        vertical-align: top;
+      }
+      th {
+        vertical-align: top;
+        background-color: #ddd;
+      }
+    }
+  }
+
+  .container {
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    clear: both;
+
+    .row {
+      clear: both;
+
+      p {
+        display: inline;
+      }
+
+      .cell {
+        padding: 2px;
+        border-bottom: 1px solid #000;
+        border-right: 1px solid #000;
+      }
+
+      .header-cell {
+        background-color: #ddd;
+        border-right: none;
+        font-weight: bold;
+      }
+
+      .right-cell {
+        text-align: right;
+      }
+    }
+  }
+}

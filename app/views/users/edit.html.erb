@@ -1,5 +1,5 @@
-<% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
+<% provide(:title, "Benutzer bearbeiten") %>
+<h1>Bearbeite dein Profile</h1>
 
 <%= simple_form_for @user, html: {:class => 'form-horizontal'}  do |f| %>
     <%= f.error_notification %>
@@ -7,6 +7,6 @@
     <%= f.input :name %>
     <%= f.input :email %>
     <%= f.input :password %>
-    <%= f.input :password_confirmation, label: 'Confirm Password' %>
-    <%= f.button :submit, 'Save changes', class: 'col-sm-offset-2' %>
+    <%= f.input :password_confirmation %>
+    <%= f.button :submit, 'Speichere Änderungen', class: 'col-sm-offset-2' %>
 <% end %>
