@@ -39,6 +39,7 @@ gem 'mini_magick'
 gem 'rmagick'
 
 gem 'wicked_pdf'
+gem 'non-stupid-digest-assets'
 
 gem 'activerecord-session_store'
 
