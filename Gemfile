@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.2'
 
 group :test do
   gem 'sqlite3', '1.3.8'
@@ -26,7 +26,7 @@ gem 'jquery-ui-rails'
 gem 'uglifier', '2.1.1'
 gem 'jbuilder', '1.5.3'
 
-gem 'sass-rails', '4.0.1'
+gem 'sass-rails', '4.0.2'
 gem 'bootstrap-sass', '3.0.3.0'
 
 gem 'simple_form', github: 'wtfiwtz/simple_form_bootstrap3'
