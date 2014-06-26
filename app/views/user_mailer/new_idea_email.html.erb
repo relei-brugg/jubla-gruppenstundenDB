@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+    <h1>Neue Gruppenstunde</h1>
+
+    <p>Die Gruppenstunde <%= link_to @idea.title, idea_url(@idea) %> wurde von <%= @idea.user.name %> erstellt.</p>
+    <p>Bitte überprüfe ob sie in Ordnung ist und veröffentliche sie <%= link_to 'hier', unpublished_ideas_url %>.</p>
+    <p>Vielen Dank!</p>
+    <p>Die GruppenstundenDB</p>
+</body>
+</html>

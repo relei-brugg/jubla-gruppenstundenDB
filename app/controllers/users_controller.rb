@@ -70,7 +70,7 @@ class UsersController < ApplicationController
   private 
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :notifications)
     end
 
     def user_owner

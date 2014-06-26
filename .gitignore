@@ -20,3 +20,6 @@ doc/
 .secret
 
 public/system/redactor_assets/
+
+# Ignore application configuration
+/config/application.yml

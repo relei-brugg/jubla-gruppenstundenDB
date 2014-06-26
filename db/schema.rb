@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115145151) do
+ActiveRecord::Schema.define(version: 20140626122246) do
 
   create_table "activity_categories", force: true do |t|
     t.string "name"
@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(version: 20140115145151) do
     t.boolean  "moderator",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "notifications",   default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

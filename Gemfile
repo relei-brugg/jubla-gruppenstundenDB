@@ -28,6 +28,7 @@ gem 'jbuilder', '1.5.3'
 
 gem 'sass-rails', '4.0.2'
 gem 'bootstrap-sass', '3.0.3.0'
+gem 'figaro'
 
 gem 'simple_form', github: 'wtfiwtz/simple_form_bootstrap3'
 gem 'will_paginate', '3.0.5'

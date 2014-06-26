@@ -8,5 +8,16 @@
     <%= f.input :email %>
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
+    <% if moderator? %>
+        <div class="form-group">
+            <label for="notifications" class="optional control-label col-sm-2">Benachrichtigungen:</label>
+            <div class="col-sm-8">
+                <span class="checkbox">
+                    <%= f.check_box :notifications %>
+                  <label class="check_boxes" for="user_notifications">bei neuen Gruppenstunden</label>
+                </span>
+            </div>
+        </div>
+    <% end %>
     <%= f.button :submit, 'Speichere Änderungen', class: 'col-sm-offset-2' %>
 <% end %>

@@ -103,6 +103,7 @@ class IdeasController < ApplicationController
     if @idea.save_step? && @idea.all_valid? && @idea.save
       resetSession
       flash[:success] = 'Idea saved!'
+      UserMailer.new_idea_email(@idea).deliver
       redirect_to @idea
     else
       render 'new'
